@@ -1,5 +1,6 @@
 #include <iostream>
 #include "descricao.hpp"
+#include <string>
 
 using namespace std;
 
@@ -9,12 +10,12 @@ Descricao::Descricao(){
 Descricao::~Descricao(){
 
 }
-Descricao::imprimirEntrada(){
-  cout<<"Bem-vindo ao programa para editar imagens .ppm ou .gpm\n"
+void Descricao::imprimirEntrada(){
+  cout<<"Bem-vindo ao programa para editar imagens .ppm ou .gpm\n\n";
 }
-Descricao::imprimirOpcoes(){
-  cout<<"Escolha uma opição:\n"
-  cout<<"A) Ler uma imagem\n"
-  cout<<"B) Renomer uma imagem\n"
-  cout<<"C) Mudar a cor da imagem\n"
+void Descricao::imprimirOpcoes(){
+  cout<<"Escolha uma opição:\n\n";
+  cout<<"A) Ler uma imagem\n";
+  cout<<"B) Renomenar e salvar uma nova imagem\n";
+  cout<<"C) Transformar uma imagem .ppm para .pgm\n";
 }

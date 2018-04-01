@@ -2,9 +2,10 @@
 #define DESCRICAO_HPP
 
 class Descricao{
+public:
   Descricao();
   ~Descricao();
-  imprimirEntrada();
-  imprimirOpcoes();
+  void imprimirEntrada();
+  void imprimirOpcoes();
 };
 #endif
