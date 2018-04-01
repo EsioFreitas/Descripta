@@ -4,7 +4,12 @@
 
 using namespace std;
 
+Funcao::Funcao(){
+
+}
+
 void Funcao::lerImagem(){
+
 
 }
 void Funcao::renomearImagem(){

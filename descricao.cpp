@@ -18,4 +18,5 @@ void Descricao::imprimirOpcoes(){
   cout<<"A) Ler uma imagem\n";
   cout<<"B) Renomenar e salvar uma nova imagem\n";
   cout<<"C) Transformar uma imagem .ppm para .pgm\n";
+  std::cout << "Opção: ";
 }
