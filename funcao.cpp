@@ -1,6 +1,7 @@
 #include <iostream>
-#include "funcao.hpp"
 #include <string>
+#include "funcao.hpp"
+#include <fstream>
 
 using namespace std;
 
@@ -10,6 +11,16 @@ Funcao::Funcao(){
 
 void Funcao::lerImagem(){
 
+  cin>>arquivo;
+  foto.open(arquivo);
+
+  if(foto.is_open()){
+    while(getline(foto,linha)){
+      cout<<linha<< endl;
+    }
+  } else{
+    cout<< "Não foi possivel abrir o arquivo\n";
+  }
 
 }
 void Funcao::renomearImagem(){

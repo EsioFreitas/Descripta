@@ -14,7 +14,7 @@ void Descricao::imprimirEntrada(){
   cout<<"Bem-vindo ao programa para editar imagens .ppm ou .gpm\n\n";
 }
 void Descricao::imprimirOpcoes(){
-  cout<<"Escolha uma opição:\n\n";
+  cout<<"Escolha uma opção:\n\n";
   cout<<"A) Ler uma imagem\n";
   cout<<"B) Renomenar e salvar uma nova imagem\n";
   cout<<"C) Transformar uma imagem .ppm para .pgm\n";
