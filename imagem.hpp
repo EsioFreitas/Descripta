@@ -13,8 +13,11 @@ protected:
   string comentario;
 
 public:
-  Imagem(string tipo, int altura, int largura);
+  //Construtor e destrutor
+  Imagem();
   ~Imagem();
+
+  //Métodos acessores
   void setAltura(int altura);
   int getAltura();
   void setLargura(int largura);
@@ -23,5 +26,8 @@ public:
   string getTipo();
   void setComentario(string comentario);
   string getComentario();
+
+  //Outros métodos
+  void lerImagem();
 };
 #endif

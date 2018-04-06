@@ -1,16 +1,19 @@
 #include <string>
 #include "imagem.hpp"
+#include <fstream>
+
 
 using namespace std;
 
-Imagem::Imagem(string tipo, int altura, int largura){
-  this->tipo = tipo;
-  this->altura = altura;
-  this->largura = largura;
+//Construtores e destrutores
+Imagem::Imagem(){
+
 }
 Imagem::~Imagem(){
 
 }
+
+//Métodos acessores
 void Imagem::setAltura(int altura){
   this->altura = altura;
 }
@@ -34,4 +37,17 @@ void Imagem::setComentario(string comentario){
 }
 string Imagem::getComentario(){
   return this->comentario;
+}
+
+//Outros métodos
+void Imagem::lerImagem(){
+  char nomeArquivo[100];
+  cin>>nomeArquivo;
+  ifstream imagem;
+  imagem.open(nomeArquivo);
+
+  if(!imagem.is_open()){
+    cout<<"Não foi possível encontrar o arquivo.\n";
+    imagem.clear();
+  }
 }
