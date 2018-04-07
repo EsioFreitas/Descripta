@@ -4,23 +4,35 @@
 
 using namespace std;
 
-int Menu::apresentarMenu(){
+Menu::Menu(){
+
+}
+Menu::~Menu(){
+
+}
+
+void Menu::setOpcao(int opcao){
+  this->opcao=opcao;
+}
+int Menu::getOpcao(){
+  std::cout << this->opcao << '\n';
+  return this->opcao;
+}
+
+void Menu::apresentarMenu(){
 
     cout<<"Bem ao programa para descriptografar uma mensagem em uma imagem!\n";
     cout<<"Que tipo de arquivo você quer descriptografar?\n";
     cout<<"1) Imagem .ppm\n";
     cout<<"2) Imagem .pgm\n";
 
-    int opcao;
-
     for(1;1;1){
-      cin>>opcao;
+      cin>>this->opcao;
       system("cls");
       system("clear");
 
       switch(opcao){
         case 1:
-          cout<<"nada";
           break;
         case 2:
           break;
@@ -33,5 +45,4 @@ int Menu::apresentarMenu(){
 
       }
     }
-    return opcao;
 }

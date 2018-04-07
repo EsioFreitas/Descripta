@@ -2,8 +2,13 @@
 #define MEUNU_HPP
 
 class Menu{
-
+private:
+  int opcao;
 public:
-  int apresentarMenu();
+  Menu();
+  ~Menu();
+  void setOpcao(int opcao);
+  int getOpcao();
+  void apresentarMenu();
 };
 #endif
