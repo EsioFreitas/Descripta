@@ -2,6 +2,7 @@
 #define IMAGEM_HPP
 
 #include <string>
+#include <fstream>
 
 using namespace std;
 
@@ -13,6 +14,7 @@ protected:
   string comentario;
 
 public:
+  ifstream imagem;
   //Construtor e destrutor
   Imagem();
   ~Imagem();
@@ -29,5 +31,6 @@ public:
 
   //Outros métodos
   void lerImagem();
+  bool saberTipo();
 };
 #endif
