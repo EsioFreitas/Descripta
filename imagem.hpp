@@ -31,6 +31,5 @@ public:
 
   //Outros métodos
   void lerImagem();
-  bool saberTipo();
 };
 #endif

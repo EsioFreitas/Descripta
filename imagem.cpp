@@ -52,13 +52,3 @@ void Imagem::lerImagem(){
     imagem.clear();
   }
 }
-
-bool saberTipo(){
-  char tipo;
-  cin>>tipo;
-  if(tipo=='1'){ //ppm
-    return true;
-  }else if (tipo '2'){ //pgm
-    return false;
-  }else cout<<"Não há essa opção"
-}

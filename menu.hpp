@@ -2,6 +2,8 @@
 #define MEUNU_HPP
 
 class Menu{
-  void apresentarMenu();
+
+public:
+  int apresentarMenu();
 };
 #endif
