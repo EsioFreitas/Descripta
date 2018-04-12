@@ -1,6 +1,7 @@
 #ifndef PPM_HPP
 #define PPM_HPP
 
+#include "imagem.hpp"
 class Ppm : public Imagem{
 
 private:

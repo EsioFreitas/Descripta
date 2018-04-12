@@ -1,23 +1,25 @@
 #include"ppm.hpp"
 #include <fstream>
 
+#include "imagem.hpp"
+
 using namespace std;
 
-void setRed(int red){
+void Ppm::setRed(int red){
   this->red = red;
 }
-int getRed(){
+int Ppm::getRed(){
   return this->red;
 }
-void setGreen(int red){
+void Ppm::setGreen(int red){
   this->green = green;
 }
-int getGreen(){
+int Ppm::getGreen(){
   return this->green;
 }
-void setBlue(int red){
+void Ppm::setBlue(int red){
   this->blue = blue;
 }
-int getBlue(){
+int Ppm::getBlue(){
   return blue;
 }

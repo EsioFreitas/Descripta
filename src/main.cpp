@@ -20,9 +20,10 @@ int main(int argc, char const *argv[]) {
 
   }*/
 
-  imagem->lerImagem();
-  imagem->imprimeDadosImagem();
+  //imagem->lerImagem();
+  //imagem->imprimeDadosImagem();
 
+  menu->apresentarMenu();
 
   return 0;
 }
