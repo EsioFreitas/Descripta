@@ -3,6 +3,8 @@
 
 #include <string>
 #include <fstream>
+#include <stdlib.h>
+
 
 using namespace std;
 
@@ -12,9 +14,10 @@ protected:
   int largura;
   string tipo;
   string comentario;
+  char nomeArquivo[100];
+  string conteudoFinal;
 
 public:
-  ifstream imagem;
   //Construtor e destrutor
   Imagem();
   ~Imagem();
@@ -31,5 +34,10 @@ public:
 
   //Outros métodos
   void lerImagem();
+  ifstream imagem;
+  void imprimeDadosImagem();
+
+
+
 };
 #endif

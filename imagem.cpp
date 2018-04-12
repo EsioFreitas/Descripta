@@ -42,13 +42,25 @@ string Imagem::getComentario(){
 
 //Outros métodos
 void Imagem::lerImagem(){
-  char nomeArquivo[100];
-  cin>>nomeArquivo;
-  ifstream imagem;
-  imagem.open(nomeArquivo);
 
-  if(!imagem.is_open()){
+  string conteudo;
+
+  cin>>this->nomeArquivo;
+  imagem.open(nomeArquivo, ifstream::binary);
+
+  if(imagem.is_open()){
+    while (getline(imagem,conteudo)){
+      this->conteudoFinal +=conteudo;
+    }
+    cout<<conteudoFinal;
+  }
+  else{
     cout<<"Não foi possível encontrar o arquivo.\n";
     imagem.clear();
-  }
+    }
+
+}
+
+void Imagem::imprimeDadosImagem(){
+
 }
