@@ -77,13 +77,25 @@ void Imagem::lerImagem(){
 }
 
 void Imagem::pegarDados(){
+  int i=0;
+  int j=0;
+
   this->tipo = conteudos[0];
   this->comentario = conteudos[1];
 
-  for(int i = 1; strlen(comentario.c_str()) && !isspace(comentario[i]); i++)
+  for(i; strlen(comentario.c_str()) && !isspace(comentario[i]); i++)
   comentario[0] = ' ';
 
-  tamanhoSMS = atoi(comentario.c_str());
+  this->localSMS = atoi(comentario.c_str());
+  std::cout << localSMS << '\n';
+
+  for(i++; strlen(comentario.c_str()) && !isspace(comentario[i]); i++){
+    comentario[j] = comentario[i];
+    comentario[j+1] = '\0';
+    j++;
+  }
+
+  this->tamanhoSMS = atoi(comentario.c_str());
   std::cout << tamanhoSMS << '\n';
 
 
