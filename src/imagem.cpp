@@ -1,7 +1,11 @@
 #include <string>
+#include <bits/stdc++.h>
 #include "imagem.hpp"
 #include <fstream>
 #include <iostream>
+#include <stdio.h>
+#include <cstring>
+#include <cstdlib>
 
 
 using namespace std;
@@ -25,7 +29,7 @@ void Imagem::setLargura(int largura){
   this->largura = largura;
 }
 int Imagem::getLargura(){
-return this->altura;
+  return this->altura;
 }
 void Imagem::setTipo(string tipo){
   this->tipo = tipo;
@@ -43,16 +47,27 @@ string Imagem::getComentario(){
 //Outros métodos
 void Imagem::lerImagem(){
 
-  string conteudo;
+  string linha;
+
 
   cin>>this->nomeArquivo;
   imagem.open(nomeArquivo, ifstream::binary);
 
   if(imagem.is_open()){
-    while (getline(imagem,conteudo)){
-      this->conteudoFinal +=conteudo;
+    while (getline(imagem,linha)){
+      conteudos.push_back(linha);
     }
-    cout<<conteudoFinal;
+
+    //cout << conteudos[4][13000] << endl;
+    //imprimido a sms
+    //for(int i = 13000; i < 13050; i++){
+    //  cout << conteudos[4][i];
+  //  }
+
+    // for(int i = 4; i < conteudos.size(); i++){
+    //   cout << conteudos[i] << endl;
+    // }
+    imagem.clear();
   }
   else{
     cout<<"Não foi possível encontrar o arquivo.\n";
@@ -61,6 +76,17 @@ void Imagem::lerImagem(){
 
 }
 
-void Imagem::imprimeDadosImagem(){
+void Imagem::pegarDados(){
+  this->tipo = conteudos[0];
+  this->comentario = conteudos[1];
+
+  for(int i = 1; strlen(comentario.c_str()) && !isspace(comentario[i]); i++)
+  comentario[0] = ' ';
+
+  tamanhoSMS = atoi(comentario.c_str());
+  std::cout << tamanhoSMS << '\n';
+
+
+
 
 }

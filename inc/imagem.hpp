@@ -4,6 +4,8 @@
 #include <string>
 #include <fstream>
 #include <stdlib.h>
+#include <bits/stdc++.h>
+
 
 
 using namespace std;
@@ -16,6 +18,9 @@ protected:
   string comentario;
   char nomeArquivo[100];
   string conteudoFinal;
+  vector<string> conteudos;
+  int localSMS;
+  int tamanhoSMS;
 
 public:
   //Construtor e destrutor
@@ -36,6 +41,7 @@ public:
   void lerImagem();
   ifstream imagem;
   void imprimeDadosImagem();
+  void pegarDados();
 
 
 

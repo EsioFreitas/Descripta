@@ -19,11 +19,9 @@ int main(int argc, char const *argv[]) {
   }else if (menu->opcao == 2){
 
   }*/
-
-  //imagem->lerImagem();
-  //imagem->imprimeDadosImagem();
-
-  menu->apresentarMenu();
-
+  imagem->lerImagem();
+  // imagem->imprimeDadosImagem();
+  //  menu->apresentarMenu();
+  imagem->pegarDados();
   return 0;
 }
