@@ -1,5 +1,5 @@
 CC := g++
-CFLAGS := -Wall 
+CFLAGS := -Wall
 
 SRCFILES :=$(wildcard src/*.cpp)
 
@@ -16,4 +16,6 @@ clean:
 
 run:
 			bin/main
-	
+
+mkdir:
+			mkdir inc

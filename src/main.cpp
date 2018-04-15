@@ -9,7 +9,6 @@ using namespace std;
 int main(int argc, char const *argv[]) {
 
   Imagem *imagem = new Imagem();
-  Menu *menu = new Menu();
 
   /*menu->apresentarMenu();
   menu->getOpcao();
@@ -23,6 +22,9 @@ int main(int argc, char const *argv[]) {
   // imagem->imprimeDadosImagem();
   //  menu->apresentarMenu();
   imagem->pegarDados();
+
+  std::cout << imagem->getLocalSMS << '\n';
+  //imagem->pegarMensagem();
 
   return 0;
 }

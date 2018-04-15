@@ -43,6 +43,11 @@ void Imagem::setComentario(string comentario){
 string Imagem::getComentario(){
   return this->comentario;
 }
+int Imagem::getLocalSMS(){
+  return this->localSMS;
+}
+
+
 
 //Outros métodos
 void Imagem::lerImagem(){
@@ -68,6 +73,7 @@ void Imagem::lerImagem(){
     //   cout << conteudos[i] << endl;
     // }
     imagem.clear();
+
   }
   else{
     cout<<"Não foi possível encontrar o arquivo.\n";
@@ -98,7 +104,15 @@ void Imagem::pegarDados(){
   this->tamanhoSMS = atoi(comentario.c_str());
   std::cout << tamanhoSMS << '\n';
 
+}
 
+void Imagem::pegarMensagem(){
 
+//  for (localSMS; localSMS <(localSMS+tamanhoSMS);localSMS++){
+  //  std::cout << conteudos[4][localSMS];
+  //}
+   for (int i = 13000; i<13050;i++){
+     std::cout << conteudos[4][i];
+   }
 
 }

@@ -21,6 +21,7 @@ protected:
   vector<string> conteudos;
   int localSMS;
   int tamanhoSMS;
+  string mensagem;
 
 public:
   //Construtor e destrutor
@@ -36,12 +37,16 @@ public:
   string getTipo();
   void setComentario(string comentario);
   string getComentario();
+  void setLocalSMS(int localSMS);
+  int getLocalSMS();
 
-  //Outros métodos
+  //Outros Métodos
   void lerImagem();
   ifstream imagem;
   void imprimeDadosImagem();
   void pegarDados();
+  void pegarMensagem();
+
 
 
 
