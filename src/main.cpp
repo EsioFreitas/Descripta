@@ -23,5 +23,6 @@ int main(int argc, char const *argv[]) {
   // imagem->imprimeDadosImagem();
   //  menu->apresentarMenu();
   imagem->pegarDados();
+
   return 0;
 }
