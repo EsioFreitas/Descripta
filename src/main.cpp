@@ -23,8 +23,8 @@ int main(int argc, char const *argv[]) {
   //  menu->apresentarMenu();
   imagem->pegarDados();
 
-  std::cout << imagem->getLocalSMS << '\n';
-  //imagem->pegarMensagem();
+  std::cout << imagem->getLocalSMS() + imagem->getTamanhoSMS() << '\n';
+  imagem->pegarMensagem();
 
   return 0;
 }

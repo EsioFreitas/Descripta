@@ -39,6 +39,7 @@ public:
   string getComentario();
   void setLocalSMS(int localSMS);
   int getLocalSMS();
+  int getTamanhoSMS();
 
   //Outros Métodos
   void lerImagem();

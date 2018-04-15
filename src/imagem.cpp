@@ -46,6 +46,9 @@ string Imagem::getComentario(){
 int Imagem::getLocalSMS(){
   return this->localSMS;
 }
+int Imagem::getTamanhoSMS(){
+  return this->tamanhoSMS;
+}
 
 
 
@@ -107,12 +110,13 @@ void Imagem::pegarDados(){
 }
 
 void Imagem::pegarMensagem(){
+int i = localSMS;
+int regra = localSMS + tamanhoSMS;
 
-//  for (localSMS; localSMS <(localSMS+tamanhoSMS);localSMS++){
-  //  std::cout << conteudos[4][localSMS];
-  //}
-   for (int i = 13000; i<13050;i++){
-     std::cout << conteudos[4][i];
+   for (i; i<regra;i++){
+
+     this->mensagem += conteudos[4][i];
    }
+   std::cout << this->mensagem << '\n';
 
 }
