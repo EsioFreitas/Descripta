@@ -47,6 +47,7 @@ public:
   void imprimeDadosImagem();
   void pegarDados();
   void pegarMensagem();
+  void cifra();
 
 
 

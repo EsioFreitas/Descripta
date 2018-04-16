@@ -120,3 +120,8 @@ int regra = localSMS + tamanhoSMS;
    std::cout << this->mensagem << '\n';
 
 }
+
+
+void Imagem::cifra(){
+  
+}
