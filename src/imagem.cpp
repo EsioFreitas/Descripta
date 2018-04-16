@@ -110,6 +110,7 @@ void Imagem::pegarDados(){
 }
 
 void Imagem::pegarMensagem(){
+
 int i = localSMS;
 int regra = localSMS + tamanhoSMS;
 
@@ -123,5 +124,50 @@ int regra = localSMS + tamanhoSMS;
 
 
 void Imagem::cifra(){
-  
+
+  //tem que pegar a chave!!!  && ver exeções
+  int tamanhoTexto = strlen(this->mensagem.c_str());
+  char texto[tamanhoTexto];
+
+  for(int i=0; i<tamanhoTexto;i++){
+    texto[i] = mensagem[i];
+    texto[i+1] = '\0';
+  }
+
+  std::cout << tamanhoTexto << '\n';
+  std::cout << texto << '\n';
+
+  int i=0;
+  int contador = 0;
+  char letra;
+
+  for(letra = 'a'; letra <= 'z'; letra++){
+    while (i<=tamanhoTexto) {
+      if(texto[i] == letra){
+        texto[i] = letra-8;
+        i++;
+        contador++;
+        letra='a';
+      }
+      else if (texto[i] == ' '|| texto[i] == '-'||texto[i] =='.'){
+        i++;
+        contador++;
+        letra='a';
+      }
+      else if(texto[i] == toupper(letra)){
+        texto[i] = toupper(letra-8);
+        i++;
+        contador++;
+        letra='a';
+      }
+      else if ()
+      else
+        letra++;
+        if(contador == tamanhoTexto)
+          break;
+
+    }
+  }
+  std::cout << texto << '\n';
+
 }

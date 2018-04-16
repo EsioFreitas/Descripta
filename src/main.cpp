@@ -26,5 +26,7 @@ int main(int argc, char const *argv[]) {
   std::cout << imagem->getLocalSMS() + imagem->getTamanhoSMS() << '\n';
   imagem->pegarMensagem();
 
+  imagem->cifra();
+
   return 0;
 }
