@@ -106,6 +106,17 @@ void Imagem::pegarDados(){
 
   this->tamanhoSMS = atoi(comentario.c_str());
   std::cout << tamanhoSMS << '\n';
+/*  j=0;
+
+  for(i++; strlen(comentario.c_str()) && !isspace(comentario[i]); i++){
+    comentario[j] = comentario[i];
+    comentario[j+1] = '\0';
+    j++;
+  }
+
+  this->dadoCriptografia = atoi(comentario.c_str());
+  std::cout << dadoCriptografia << '\n';*/
+
 
 }
 
@@ -145,6 +156,14 @@ void Imagem::cifra(){
     while (i<=tamanhoTexto) {
       if(texto[i] == letra){
         texto[i] = letra-8;
+
+        if(texto[i] <=96){
+          int temporario;
+          //std::cout << texto[i] << '\n';
+          temporario = 96 - texto[i];
+          texto[i] = 'z';
+          texto[i] -=temporario;
+        }
         i++;
         contador++;
         letra='a';
@@ -160,15 +179,6 @@ void Imagem::cifra(){
         contador++;
         letra='a';
       }
-      else if( texto[i]<=96){
-        int temporario;
-        //std::cout << texto[i] << '\n';
-        temporario = 96 - texto[i];
-        texto[i] = 122;
-        texto[i] -=temporario;
-      //  std::cout << texto[i] << '\n';
-
-      }
      else
         letra++;
         if(contador == tamanhoTexto)
@@ -176,6 +186,27 @@ void Imagem::cifra(){
 
     }
   }
+
+   std::cout << texto << '\n';
+///////////////////////////////////////////////////////////
+/*for(int j=0; j<tamanhoTexto;j++){
+
+  if(texto[j] <=96 && texto[j] != toupper(texto[j])){
+    int temporario;
+    //std::cout << texto[i] << '\n';
+    temporario = 96 - texto[i];
+    texto[i] = 'z';
+    texto[i] -=temporario;
+  //  std::cout << texto[i] << '\n';
+  }
+}*/
+
+
+
+
+
+
+
   std::cout << texto << '\n';
 
 }

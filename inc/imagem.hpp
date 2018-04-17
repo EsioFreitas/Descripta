@@ -21,6 +21,7 @@ protected:
   vector<string> conteudos;
   int localSMS;
   int tamanhoSMS;
+  int dadoCriptografia;
   string mensagem;
 
 public:
