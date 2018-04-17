@@ -160,8 +160,16 @@ void Imagem::cifra(){
         contador++;
         letra='a';
       }
-      else if ()
-      else
+      else if( texto[i]<=96){
+        int temporario;
+        //std::cout << texto[i] << '\n';
+        temporario = 96 - texto[i];
+        texto[i] = 122;
+        texto[i] -=temporario;
+      //  std::cout << texto[i] << '\n';
+
+      }
+     else
         letra++;
         if(contador == tamanhoTexto)
           break;
