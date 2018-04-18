@@ -23,7 +23,7 @@ protected:
   int tamanhoSMS;
   int dadoCriptografia;
   string mensagem;
-
+  int posicaoComentario;
 public:
   //Construtor e destrutor
   Imagem();
@@ -49,6 +49,7 @@ public:
   void pegarDados();
   void pegarMensagem();
   void cifra();
+  void pegarCaracteristicaDescriptogaria();
 
 
 

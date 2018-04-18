@@ -23,11 +23,12 @@ int main(int argc, char const *argv[]) {
   // imagem->imprimeDadosImagem();
   //  menu->apresentarMenu();
   imagem->pegarDados();
-
-  std::cout << imagem->getLocalSMS() + imagem->getTamanhoSMS() << '\n';
   imagem->pegarMensagem();
 
+  imagem->pegarCaracteristicaDescriptogaria();
+
   imagem->cifra();
+
 
   return 0;
 }

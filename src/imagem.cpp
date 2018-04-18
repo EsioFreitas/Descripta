@@ -56,25 +56,16 @@ int Imagem::getTamanhoSMS(){
 void Imagem::lerImagem(){
 
   string linha;
-
-
+  //Pegando o arquivo
   cin>>this->nomeArquivo;
   imagem.open(nomeArquivo, ifstream::binary);
 
+  //Jovando o arquivo em um vector
   if(imagem.is_open()){
     while (getline(imagem,linha)){
       conteudos.push_back(linha);
     }
 
-    //cout << conteudos[4][13000] << endl;
-    //imprimido a sms
-    //for(int i = 13000; i < 13050; i++){
-    //  cout << conteudos[4][i];
-  //  }
-
-    // for(int i = 4; i < conteudos.size(); i++){
-    //   cout << conteudos[i] << endl;
-    // }
     imagem.clear();
 
   }
@@ -92,6 +83,7 @@ void Imagem::pegarDados(){
   this->tipo = conteudos[0];
   this->comentario = conteudos[1];
 
+  //Pegando os dados do comentario e separando em variáveis
   for(i; strlen(comentario.c_str()) && !isspace(comentario[i]); i++)
   comentario[0] = ' ';
 
@@ -102,29 +94,27 @@ void Imagem::pegarDados(){
     comentario[j] = comentario[i];
     comentario[j+1] = '\0';
     j++;
+
   }
-
   this->tamanhoSMS = atoi(comentario.c_str());
-  std::cout << tamanhoSMS << '\n';
-/*  j=0;
 
-  for(i++; strlen(comentario.c_str()) && !isspace(comentario[i]); i++){
-    comentario[j] = comentario[i];
-    comentario[j+1] = '\0';
-    j++;
+
+  this->posicaoComentario = i;
+  std::cout << posicaoComentario<<"iiiiiiiii" << '\n';
+
+  /*for(i++;  strlen(comentario.c_str()) && !isspace(comentario[i]); i++){
+    comentario[k] = comentario[i];
+    comentario[k+1] = '\0';
+    k++;
   }
 
   this->dadoCriptografia = atoi(comentario.c_str());
-  std::cout << dadoCriptografia << '\n';*/
-
-
+  std::cout << dadoCriptografia<< "essssee" << '\n';*/
 }
 
 void Imagem::pegarMensagem(){
-
-int i = localSMS;
-int regra = localSMS + tamanhoSMS;
-
+  int i = localSMS;
+  int regra = localSMS + tamanhoSMS;
    for (i; i<regra;i++){
 
      this->mensagem += conteudos[4][i];
@@ -133,8 +123,24 @@ int regra = localSMS + tamanhoSMS;
 
 }
 
+void Imagem::pegarCaracteristicaDescriptogaria(){
+  int i = posicaoComentario;
+  std::cout << i << "eeeseta"<< '\n';
+  int k = 0;
+    i++;
+    comentario[k] = comentario[i];
+    comentario[k+1] = '\0';
+
+
+  this->dadoCriptografia = atoi(comentario.c_str());
+  std::cout << dadoCriptografia << '\n';
+}
 
 void Imagem::cifra(){
+
+  int deslocamento = this->dadoCriptografia;
+
+  std::cout << dadoCriptografia<<"eeeeeeeeeeeeeee" << '\n';
 
   //tem que pegar a chave!!!  && ver exeções
   int tamanhoTexto = strlen(this->mensagem.c_str());
@@ -155,7 +161,7 @@ void Imagem::cifra(){
   for(letra = 'a'; letra <= 'z'; letra++){
     while (i<=tamanhoTexto) {
       if(texto[i] == letra){
-        texto[i] = letra-8;
+        texto[i] = letra-deslocamento;
 
         if(texto[i] <=96){
           int temporario;
@@ -174,7 +180,7 @@ void Imagem::cifra(){
         letra='a';
       }
       else if(texto[i] == toupper(letra)){
-        texto[i] = toupper(letra-8);
+        texto[i] = toupper(letra-deslocamento);
         i++;
         contador++;
         letra='a';
@@ -186,25 +192,6 @@ void Imagem::cifra(){
 
     }
   }
-
-   std::cout << texto << '\n';
-///////////////////////////////////////////////////////////
-/*for(int j=0; j<tamanhoTexto;j++){
-
-  if(texto[j] <=96 && texto[j] != toupper(texto[j])){
-    int temporario;
-    //std::cout << texto[i] << '\n';
-    temporario = 96 - texto[i];
-    texto[i] = 'z';
-    texto[i] -=temporario;
-  //  std::cout << texto[i] << '\n';
-  }
-}*/
-
-
-
-
-
 
 
   std::cout << texto << '\n';
