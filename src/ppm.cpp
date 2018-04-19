@@ -12,27 +12,10 @@ Ppm::~Ppm(){
 
 }
 
-void Ppm::setRed(int red){
-  this->red = red;
-}
-int Ppm::getRed(){
-  return this->red;
-}
-void Ppm::setGreen(int red){
-  this->green = green;
-}
-int Ppm::getGreen(){
-  return this->green;
-}
-void Ppm::setBlue(int red){
-  this->blue = blue;
-}
-int Ppm::getBlue(){
-  return blue;
-}
 
 
-/*void Imagem::pegarDados(){
+
+void Ppm::pegarDados(){
   int i=0;
   int j=0;
 
@@ -59,4 +42,3 @@ int Ppm::getBlue(){
   //Salvando a ultima posição do i para poder pegar a 3° SMS
   this->posicaoComentario = i;
 }
-*/

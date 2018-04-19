@@ -45,7 +45,7 @@ public:
   ifstream imagem;
   void pegarDados();
   void pegarMensagem();
-  virtual void pegarTerceiroDado() = 0;
+  void pegarTerceiroDado();
 
 
 

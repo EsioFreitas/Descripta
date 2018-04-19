@@ -6,23 +6,15 @@
 #include <fstream>
 #include <stdlib.h>
 
-class Ppm : public Imagem {
+using namespace std;
 
-private:
-  int red;
-  int green;
-  int blue;
+class Ppm : public Imagem {
 
 public:
   Ppm();
   ~Ppm();
+  void pegarDados();
 
-  void setRed(int red);
-  int getRed();
-  void setGreen(int red);
-  int getGreen();
-  void setBlue(int red);
-  int getBlue();
 
 };
 

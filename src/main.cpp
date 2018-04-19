@@ -1,10 +1,10 @@
 #include "imagem.hpp"
+#include "ppm.hpp"
 #include <fstream>
 #include <iostream>
 #include <string>
 #include "pgm.hpp"
 #include <bits/stdc++.h>
-#include "ppm.hpp"
 
 
 using namespace std;
@@ -30,7 +30,7 @@ int main(int argc, char const *argv[]) {
       Ppm *ppm = new Ppm();
       ppm->lerImagem();
       ppm->pegarDados();
-
+      ppm->pegarMensagem();
       break;
     } else if(opcao == '2'){
       system("clear || cls");

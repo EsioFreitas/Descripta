@@ -7,6 +7,8 @@
 #include <cstring>
 #include <cstdlib>
 
+using namespace std;
+
 Pgm::Pgm(){
 
 }
