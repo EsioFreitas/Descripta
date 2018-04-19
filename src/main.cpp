@@ -23,11 +23,10 @@ int main(int argc, char const *argv[]) {
     if(opcao == '1'){
       system("clear || cls");
 
-      std::cout << "1" << '\n';
+      cout << "1" << '\n';
 
       break;
-    }
-    else if(opcao == '2'){
+    } else if(opcao == '2'){
       system("clear || cls");
       Imagem *imagem = new Imagem();
       imagem->lerImagem();
@@ -37,17 +36,16 @@ int main(int argc, char const *argv[]) {
       imagem->cifra();
 
       std::cout << "Muito obrigado!!" << '\n';
+      delete imagem; 
       break;
-    }
-    else if (opcao == '0'){
+    } else if (opcao == '0'){
       system("clear || cls");
       std::cout << "\n\nMuito obrigado!" << '\n';
 
       break;
-    }
-    else
+    } else
     system("clear || cls");
-      std::cout << "\nVERIIFIQUE A OPÇÃO ESCOLHIDA!\n" << '\n';
+    cout << "\nVERIIFIQUE A OPÇÃO ESCOLHIDA!\n" << '\n';
   }
 
 
