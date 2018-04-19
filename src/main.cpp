@@ -2,6 +2,10 @@
 #include <fstream>
 #include <iostream>
 #include <string>
+#include "pgm.hpp"
+#include <bits/stdc++.h>
+#include "ppm.hpp"
+
 
 using namespace std;
 
@@ -12,6 +16,7 @@ int main(int argc, char const *argv[]) {
 
 
   while(opcao != 0){
+    system("clear || cls");
     cout<<"Bem vindo ao programa que descriptografar uma mensagem em uma imagem!\n";
     cout<<"Que tipo de arquivo você quer descriptografar?\n";
     cout<<"1) Descriptografar uma imagem .ppm\n";
@@ -22,25 +27,26 @@ int main(int argc, char const *argv[]) {
 
     if(opcao == '1'){
       system("clear || cls");
-
-      cout << "1" << '\n';
+      Ppm *ppm = new Ppm();
+      ppm->lerImagem();
+      ppm->pegarDados();
 
       break;
     } else if(opcao == '2'){
       system("clear || cls");
-      Imagem *imagem = new Imagem();
-      imagem->lerImagem();
-      imagem->pegarDados();
-      imagem->pegarMensagem();
-      imagem->pegarCaracteristicaDescriptogaria();
-      imagem->cifra();
+      Pgm *pgm = new Pgm();
+      pgm->lerImagem();
+      pgm->pegarDados();
+      pgm->pegarMensagem();
+      pgm->pegarTerceiroDado();
+      pgm->cifraDeCesar();
 
       std::cout << "Muito obrigado!!" << '\n';
-      delete imagem; 
+    //  delete pgm;
       break;
     } else if (opcao == '0'){
       system("clear || cls");
-      std::cout << "\n\nMuito obrigado!" << '\n';
+      std::cout << "\n\nMuito obrigado pela preferência" << '\n';
 
       break;
     } else

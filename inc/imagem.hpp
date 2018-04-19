@@ -12,18 +12,16 @@ using namespace std;
 
 class Imagem{
 protected:
-  int altura;
-  int largura;
   string tipo;
   string comentario;
   char nomeArquivo[100];
-  string conteudoFinal;
   vector<string> conteudos;
   int localSMS;
   int tamanhoSMS;
   int dadoCriptografia;
   string mensagem;
   int posicaoComentario;
+
 public:
   //Construtor e destrutor
   Imagem();
@@ -45,12 +43,9 @@ public:
   //Outros Métodos
   void lerImagem();
   ifstream imagem;
-  void imprimeDadosImagem();
   void pegarDados();
   void pegarMensagem();
-  void cifra();
-  void pegarCaracteristicaDescriptogaria();
-
+  virtual void pegarTerceiroDado() = 0;
 
 
 

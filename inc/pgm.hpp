@@ -1,13 +1,19 @@
 #ifndef PGM_HPP
 #define PGM_HPP
 
-class Pgm : public Imagem{
+#include "imagem.hpp"
+#include <string>
+#include <fstream>
+#include <stdlib.h>
+
+class Pgm : public Imagem {
 
 public:
   Pgm();
   ~Pgm();
+  void cifraDeCesar();
+  void pegarTerceiroDado();
 
-//void cifraDeCesar();
 };
 
 #endif

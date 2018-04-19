@@ -2,7 +2,11 @@
 #define PPM_HPP
 
 #include "imagem.hpp"
-class Ppm : public Imagem{
+#include <string>
+#include <fstream>
+#include <stdlib.h>
+
+class Ppm : public Imagem {
 
 private:
   int red;
@@ -10,6 +14,9 @@ private:
   int blue;
 
 public:
+  Ppm();
+  ~Ppm();
+
   void setRed(int red);
   int getRed();
   void setGreen(int red);

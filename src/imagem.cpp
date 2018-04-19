@@ -19,18 +19,7 @@ Imagem::~Imagem(){
 }
 
 //Métodos acessores
-void Imagem::setAltura(int altura){
-  this->altura = altura;
-}
-int Imagem::getAltura(){
-  return this->altura;
-}
-void Imagem::setLargura(int largura){
-  this->largura = largura;
-}
-int Imagem::getLargura(){
-  return this->altura;
-}
+
 void Imagem::setTipo(string tipo){
   this->tipo = tipo;
 }
@@ -49,7 +38,6 @@ int Imagem::getLocalSMS(){
 int Imagem::getTamanhoSMS(){
   return this->tamanhoSMS;
 }
-
 
 
 //Outros métodos
@@ -75,7 +63,6 @@ void Imagem::lerImagem(){
     }
 
 }
-
 void Imagem::pegarDados(){
   int i=0;
   int j=0;
@@ -100,7 +87,6 @@ void Imagem::pegarDados(){
   //Salvando a ultima posição do i para poder pegar a 3° SMS
   this->posicaoComentario = i;
 }
-
 void Imagem::pegarMensagem(){
   int i = localSMS;
   int regra = localSMS + tamanhoSMS;
@@ -109,72 +95,5 @@ void Imagem::pegarMensagem(){
      this->mensagem += conteudos[4][i];
    }
    std::cout << "A sua mensagem: "; std::cout << this->mensagem << '\n';
-
-}
-
-void Imagem::pegarCaracteristicaDescriptogaria(){
-  int i = posicaoComentario;
-  int k = 0;
-    i++;
-    comentario[k] = comentario[i];
-    comentario[k+1] = '\0';
-
-
-  this->dadoCriptografia = atoi(comentario.c_str());
-}
-
-void Imagem::cifra(){
-
-  int deslocamento = this->dadoCriptografia;
-
-  //tem que pegar a chave!!!  && ver exeções
-  int tamanhoTexto = strlen(this->mensagem.c_str());
-  char texto[tamanhoTexto];
-
-  for(int i=0; i<tamanhoTexto;i++){
-    texto[i] = mensagem[i];
-    texto[i+1] = '\0';
-  }
-
-  int i=0;
-  int contador = 0;
-  char letra;
-
-  for(letra = 'a'; letra <= 'z'; letra++){
-    while (i<=tamanhoTexto) {
-      if(texto[i] == letra){
-        texto[i] = letra-deslocamento;
-
-        if(texto[i] <=96){
-          int temporario;
-          temporario = 96 - texto[i];
-          texto[i] = 'z';
-          texto[i] -=temporario;
-        }
-        i++;
-        contador++;
-        letra='a';
-      }
-      else if (texto[i] == ' '|| texto[i] == '-'||texto[i] =='.'){
-        i++;
-        contador++;
-        letra='a';
-      }
-      else if(texto[i] == toupper(letra)){
-        texto[i] = toupper(letra-deslocamento);
-        i++;
-        contador++;
-        letra='a';
-      }
-     else
-        letra++;
-        if(contador == tamanhoTexto)
-          break;
-
-    }
-  }
-
-
-  cout<<"A sua mensagem descriptografada: "; std::cout << texto << '\n';
 
 }
