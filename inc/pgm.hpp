@@ -3,15 +3,11 @@
 
 class Pgm : public Imagem{
 
-private:
-  int pixel;
-
 public:
   Pgm();
   ~Pgm();
 
-  void setPixel(int pixel);
-  int getPixel();
+//void cifraDeCesar();
 };
 
 #endif
