@@ -56,8 +56,8 @@ int Imagem::getTamanhoSMS(){
 void Imagem::lerImagem(){
 
   string linha;
-  //Pegando o arquivo
-  cin>>this->nomeArquivo;
+  //Pegando o arquivo pelo path
+  std::cout << "Nome do arquivo: ";cin>>this->nomeArquivo;
   imagem.open(nomeArquivo, ifstream::binary);
 
   //Jovando o arquivo em um vector
@@ -70,7 +70,7 @@ void Imagem::lerImagem(){
 
   }
   else{
-    cout<<"Não foi possível encontrar o arquivo.\n";
+    cout<<"Não foi possível encontrar o arquivo.\nMuito obrigado!";
     imagem.clear();
     }
 
@@ -88,7 +88,6 @@ void Imagem::pegarDados(){
   comentario[0] = ' ';
 
   this->localSMS = atoi(comentario.c_str());
-  std::cout << localSMS << '\n';
 
   for(i++; strlen(comentario.c_str()) && !isspace(comentario[i]); i++){
     comentario[j] = comentario[i];
@@ -98,18 +97,8 @@ void Imagem::pegarDados(){
   }
   this->tamanhoSMS = atoi(comentario.c_str());
 
-
+  //Salvando a ultima posição do i para poder pegar a 3° SMS
   this->posicaoComentario = i;
-  std::cout << posicaoComentario<<"iiiiiiiii" << '\n';
-
-  /*for(i++;  strlen(comentario.c_str()) && !isspace(comentario[i]); i++){
-    comentario[k] = comentario[i];
-    comentario[k+1] = '\0';
-    k++;
-  }
-
-  this->dadoCriptografia = atoi(comentario.c_str());
-  std::cout << dadoCriptografia<< "essssee" << '\n';*/
 }
 
 void Imagem::pegarMensagem(){
@@ -119,13 +108,12 @@ void Imagem::pegarMensagem(){
 
      this->mensagem += conteudos[4][i];
    }
-   std::cout << this->mensagem << '\n';
+   std::cout << "A sua mensagem: "; std::cout << this->mensagem << '\n';
 
 }
 
 void Imagem::pegarCaracteristicaDescriptogaria(){
   int i = posicaoComentario;
-  std::cout << i << "eeeseta"<< '\n';
   int k = 0;
     i++;
     comentario[k] = comentario[i];
@@ -133,14 +121,11 @@ void Imagem::pegarCaracteristicaDescriptogaria(){
 
 
   this->dadoCriptografia = atoi(comentario.c_str());
-  std::cout << dadoCriptografia << '\n';
 }
 
 void Imagem::cifra(){
 
   int deslocamento = this->dadoCriptografia;
-
-  std::cout << dadoCriptografia<<"eeeeeeeeeeeeeee" << '\n';
 
   //tem que pegar a chave!!!  && ver exeções
   int tamanhoTexto = strlen(this->mensagem.c_str());
@@ -150,9 +135,6 @@ void Imagem::cifra(){
     texto[i] = mensagem[i];
     texto[i+1] = '\0';
   }
-
-  std::cout << tamanhoTexto << '\n';
-  std::cout << texto << '\n';
 
   int i=0;
   int contador = 0;
@@ -165,7 +147,6 @@ void Imagem::cifra(){
 
         if(texto[i] <=96){
           int temporario;
-          //std::cout << texto[i] << '\n';
           temporario = 96 - texto[i];
           texto[i] = 'z';
           texto[i] -=temporario;
@@ -194,6 +175,6 @@ void Imagem::cifra(){
   }
 
 
-  std::cout << texto << '\n';
+  cout<<"A sua mensagem descriptografada: "; std::cout << texto << '\n';
 
 }

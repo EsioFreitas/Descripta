@@ -2,7 +2,6 @@
 #include <fstream>
 #include <iostream>
 #include <string>
-#include "menu.hpp"
 
 using namespace std;
 
@@ -10,7 +9,6 @@ char opcao =1;
 
 int main(int argc, char const *argv[]) {
 
-  Imagem *imagem = new Imagem();
 
 
   while(opcao != 0){
@@ -31,12 +29,19 @@ int main(int argc, char const *argv[]) {
     }
     else if(opcao == '2'){
       system("clear || cls");
+      Imagem *imagem = new Imagem();
+      imagem->lerImagem();
+      imagem->pegarDados();
+      imagem->pegarMensagem();
+      imagem->pegarCaracteristicaDescriptogaria();
+      imagem->cifra();
 
-      std::cout << "2" << '\n';
+      std::cout << "Muito obrigado!!" << '\n';
+      break;
     }
     else if (opcao == '0'){
       system("clear || cls");
-      std::cout << "Muito obrigado!" << '\n';
+      std::cout << "\n\nMuito obrigado!" << '\n';
 
       break;
     }
@@ -45,23 +50,6 @@ int main(int argc, char const *argv[]) {
       std::cout << "\nVERIIFIQUE A OPÇÃO ESCOLHIDA!\n" << '\n';
   }
 
-
-  std::cout << opcao<<"eeee" << '\n';
-
-  /*if(menu->opcao == 1){
-
-  }else if (menu->opcao == 2){
-
-  }
-  imagem->lerImagem();
-  // imagem->imprimeDadosImagem();
-  //  menu->apresentarMenu();
-  imagem->pegarDados();
-  imagem->pegarMensagem();
-
-  imagem->pegarCaracteristicaDescriptogaria();
-
-  imagem->cifra();*/
 
 
   return 0;
