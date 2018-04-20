@@ -11,7 +11,7 @@ Ppm::Ppm(){
 Ppm::~Ppm(){
 
 }
-
+O MELHOR CODIGO E AQUELE QUE NAO EXISTE       EDSON ALVES
 
 
 
@@ -36,7 +36,8 @@ void Ppm::pegarDados(){
   }
   this->tamanhoSMS = atoi(comentario.c_str());
   std::cout << tamanhoSMS << '\n';
-  std::cout << tamanhoSMS*3 << '\n';
+  this->tamanhoReal = tamanhoSMS*3;
+  std::cout << tamanhoReal << '\n';
 
 
   //Salvando a ultima posição do i para poder pegar a 3° SMS

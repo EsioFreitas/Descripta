@@ -10,6 +10,8 @@ using namespace std;
 
 class Ppm : public Imagem {
 
+private:
+  int tamanhoReal;
 public:
   Ppm();
   ~Ppm();
