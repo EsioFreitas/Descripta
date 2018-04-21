@@ -9,30 +9,33 @@
 
 using namespace std;
 
+//Construtor e destrutor
 Pgm::Pgm(){
 
 }
-
 Pgm::~Pgm(){
 
 }
 
+//Outros métodos
+
+//Método sobrescrito para pegar o 3° dado do comentário
 void Pgm::pegarTerceiroDado(){
+
   int i = posicaoComentario;
   int k = 0;
+
   i++;
   comentario[k] = comentario[i];
   comentario[k+1] = '\0';
-
-
   this->dadoCriptografia = atoi(comentario.c_str());
 }
 
+//A cifra de Cesar
 void Pgm::cifraDeCesar(){
 
+  //Jogando os dados em variáveis locai
   int deslocamento = this->dadoCriptografia;
-
-  //tem que pegar a chave!!!  && ver exeções
   int tamanhoTexto = strlen(this->mensagem.c_str());
   char texto[tamanhoTexto];
 
@@ -45,6 +48,7 @@ void Pgm::cifraDeCesar(){
   int contador = 0;
   char letra;
 
+  //A cifra
   for(letra = 'a'; letra <= 'z'; letra++){
     while (i<=tamanhoTexto) {
       if(texto[i] == letra){
@@ -79,7 +83,5 @@ void Pgm::cifraDeCesar(){
     }
   }
 
-
   cout<<"A sua mensagem descriptografada: "; std::cout << texto << '\n';
-
 }

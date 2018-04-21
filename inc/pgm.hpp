@@ -13,7 +13,6 @@ public:
   ~Pgm();
   void cifraDeCesar();
   void pegarTerceiroDado();
-
 };
 
 #endif

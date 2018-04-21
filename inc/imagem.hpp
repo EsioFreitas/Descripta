@@ -28,26 +28,26 @@ public:
   ~Imagem();
 
   //Métodos acessores
-  void setAltura(int altura);
-  int getAltura();
-  void setLargura(int largura);
-  int getLargura();
-  void setTipo(string tipo);
-  string getTipo();
-  void setComentario(string comentario);
-  string getComentario();
-  void setLocalSMS(int localSMS);
-  int getLocalSMS();
-  int getTamanhoSMS();
+    void setPosicaoComentario(int posicaoComentario);
+    int getPosicaoComentario();
+    void setDadoCriptografia(int dadoCriptografia);
+    int getDadoCriptografia();
+    void setTipo(string tipo);
+    string getTipo();
+    void setComentario(string comentario);
+    string getComentario();
+    void setLocalSMS(int localSMS);
+    int getLocalSMS();
+    void setTamanhoSMS(int tamanhoSMS);
+    int getTamanhoSMS();
+    void setMensagem(string mensagem);
+    string getMensagem();
+
 
   //Outros Métodos
   void lerImagem();
   ifstream imagem;
   void pegarDados();
   void pegarMensagem();
-  void pegarTerceiroDado();
-
-
-
 };
 #endif
