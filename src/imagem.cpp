@@ -70,8 +70,9 @@ void Imagem::lerImagem(){
 
   string linha;
   //Pegando o arquivo pelo path
-  std::cout << "Nome do arquivo: ";cin>>this->nomeArquivo;
+  std::cout << "Nome do arquivo: "; cin>>this->nomeArquivo;
   imagem.open(nomeArquivo, ifstream::binary);
+
 
   //Jovando o arquivo em um vector
   if(imagem.is_open()){
@@ -95,34 +96,36 @@ void Imagem::pegarDados(){
   int j=0;
 
   //Salvando os conteúdos nas variáveis
-  this->tipo = conteudos[0];
-  this->comentario = conteudos[1];
+  setTipo(conteudos[0]);
+  setComentario(conteudos[1]);
 
   //Pegando os dados do comentario e separando em suas respectivas variáveis
   for(i; strlen(comentario.c_str()) && !isspace(comentario[i]); i++)
   comentario[0] = ' ';
-  this->localSMS = atoi(comentario.c_str());
+  setLocalSMS(atoi(comentario.c_str()));
 
   for(i++; strlen(comentario.c_str()) && !isspace(comentario[i]); i++){
     comentario[j] = comentario[i];
     comentario[j+1] = '\0';
     j++;
   }
-  this->tamanhoSMS = atoi(comentario.c_str());
+  setTamanhoSMS(atoi(comentario.c_str()));
 
   //Salvando a ultima posição do i para poder pegar o 3° dado
-  this->posicaoComentario = i;
+  setPosicaoComentario(i);
   }
 
 //Jogando o conteúdo da imagem é uma variável
 void Imagem::pegarMensagem(){
+
     int i = localSMS;
     int regra = localSMS + tamanhoSMS;
+
     for (i; i<regra;i++){
 
      this->mensagem += conteudos[4][i];
     }
-    std::cout << "A sua mensagem: " << this->mensagem << '\n';
+    std::cout << "A sua mensagem: " << getMensagem() << '\n';
   }
 
   void pegarTerceiroDado(){

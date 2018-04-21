@@ -28,7 +28,7 @@ void Pgm::pegarTerceiroDado(){
   i++;
   comentario[k] = comentario[i];
   comentario[k+1] = '\0';
-  this->dadoCriptografia = atoi(comentario.c_str());
+  setDadoCriptografia(atoi(comentario.c_str()));
 }
 
 //A cifra de Cesar
