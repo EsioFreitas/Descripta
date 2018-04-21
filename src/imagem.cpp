@@ -128,6 +128,7 @@ void Imagem::pegarMensagem(){
     std::cout << "A sua mensagem: " << getMensagem() << '\n';
   }
 
-  void pegarTerceiroDado(){
+//Método para ser sobrescrito nas classes Ppm e Pgm 
+void pegarTerceiroDado(){
 
   }
