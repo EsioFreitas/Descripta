@@ -14,7 +14,6 @@ class Imagem{
 protected:
   string tipo;
   string comentario;
-  char nomeArquivo[100];
   vector<string> conteudos;
   int localSMS;
   int tamanhoSMS;

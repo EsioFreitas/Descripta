@@ -69,8 +69,10 @@ string Imagem::getMensagem(){
 void Imagem::lerImagem(){
 
   string linha;
+  char nomeArquivo[100];
+
   //Pegando o arquivo pelo path
-  std::cout << "Nome do arquivo: "; cin>>this->nomeArquivo;
+  cout << "Nome do arquivo: "; cin>>nomeArquivo;
   imagem.open(nomeArquivo, ifstream::binary);
 
 
@@ -92,43 +94,46 @@ void Imagem::lerImagem(){
 
 //Jogando os dadados da imagem em variáveis
 void Imagem::pegarDados(){
-  int i=0;
-  int j=0;
+  int contador1 = 0;
+  int contador2 = 0;
+  int primeiraPosicao = 0;
+  int segundaPosicao = 1;
 
   //Salvando os conteúdos nas variáveis
-  setTipo(conteudos[0]);
-  setComentario(conteudos[1]);
+  setTipo(conteudos[primeiraPosicao]);
+  setComentario(conteudos[segundaPosicao]);
 
   //Pegando os dados do comentario e separando em suas respectivas variáveis
-  for(i; strlen(comentario.c_str()) && !isspace(comentario[i]); i++)
-  comentario[0] = ' ';
+  for(contador1; strlen(comentario.c_str()) && !isspace(comentario[contador1]); contador1++)
+  comentario[primeiraPosicao] = ' ';
   setLocalSMS(atoi(comentario.c_str()));
 
-  for(i++; strlen(comentario.c_str()) && !isspace(comentario[i]); i++){
-    comentario[j] = comentario[i];
-    comentario[j+1] = '\0';
-    j++;
+  for(contador1++; strlen(comentario.c_str()) && !isspace(comentario[contador1]); contador1++){
+    comentario[contador2] = comentario[contador1];
+    comentario[contador2+segundaPosicao] = '\0';
+    contador2++;
   }
   setTamanhoSMS(atoi(comentario.c_str()));
 
   //Salvando a ultima posição do i para poder pegar o 3° dado
-  setPosicaoComentario(i);
+  setPosicaoComentario(contador1);
   }
 
 //Jogando o conteúdo da imagem é uma variável
 void Imagem::pegarMensagem(){
 
-    int i = localSMS;
+    int contador = localSMS;
     int regra = localSMS + tamanhoSMS;
+    int linhaDoConteudo =4;
 
-    for (i; i<regra;i++){
+    for (contador; contador<regra; contador++){
 
-     this->mensagem += conteudos[4][i];
+     this->mensagem += conteudos[linhaDoConteudo][contador];
     }
-    std::cout << "A sua mensagem: " << getMensagem() << '\n';
+    cout << "A sua mensagem: " << getMensagem() << '\n';
   }
 
-//Método para ser sobrescrito nas classes Ppm e Pgm 
+//Método para ser sobrescrito nas classes Ppm e Pgm
 void pegarTerceiroDado(){
 
   }

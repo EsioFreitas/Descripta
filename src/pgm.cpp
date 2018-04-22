@@ -22,12 +22,13 @@ Pgm::~Pgm(){
 //Método sobrescrito para pegar o 3° dado do comentário
 void Pgm::pegarTerceiroDado(){
 
-  int i = posicaoComentario;
-  int k = 0;
+  int contador1 = posicaoComentario;
+  int contador2 = 0;
+  int encremento=1;
 
-  i++;
-  comentario[k] = comentario[i];
-  comentario[k+1] = '\0';
+  contador1++;
+  comentario[contador2] = comentario[contador1];
+  comentario[contador2+encremento] = '\0';
   setDadoCriptografia(atoi(comentario.c_str()));
 }
 
