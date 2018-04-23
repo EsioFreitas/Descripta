@@ -12,7 +12,7 @@ public:
   Pgm();
   ~Pgm();
   void cifraDeCesar();
-  void pegarTerceiroDado();
+
 };
 
 #endif

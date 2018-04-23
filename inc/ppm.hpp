@@ -15,8 +15,7 @@ private:
 public:
   Ppm();
   ~Ppm();
-  void pegarDados();
-
+  void pegarTerceiroDado();
 
 };
 

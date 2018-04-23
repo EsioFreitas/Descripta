@@ -11,7 +11,6 @@ using namespace std;
 
 //Construtor e destrutor
 Pgm::Pgm(){
-
 }
 Pgm::~Pgm(){
 
@@ -20,30 +19,25 @@ Pgm::~Pgm(){
 //Outros métodos
 
 //Método sobrescrito para pegar o 3° dado do comentário
-void Pgm::pegarTerceiroDado(){
 
-  int contador1 = posicaoComentario;
-  int contador2 = 0;
-  int encremento=1;
-
-  contador1++;
-  comentario[contador2] = comentario[contador1];
-  comentario[contador2+encremento] = '\0';
-  setDadoCriptografia(atoi(comentario.c_str()));
-}
 
 //A cifra de Cesar
+
 void Pgm::cifraDeCesar(){
 
   //Jogando os dados em variáveis locai
-  int deslocamento = this->dadoCriptografia;
+  int deslocamento = getDadoCriptografia();
   int tamanhoTexto = strlen(this->mensagem.c_str());
   char texto[tamanhoTexto];
+
+  std::cout << deslocamento << '\n';
+  std::cout << tamanhoTexto << '\n';
 
   for(int i=0; i<tamanhoTexto;i++){
     texto[i] = mensagem[i];
     texto[i+1] = '\0';
   }
+  std::cout << texto << '\n';
 
   int i=0;
   int contador = 0;
@@ -86,3 +80,26 @@ void Pgm::cifraDeCesar(){
 
   cout<<"A sua mensagem descriptografada: "; std::cout << texto << '\n';
 }
+
+
+/*void Pgm::cifraDeCesar(){
+  string mensagemDecodificada = "";
+
+	for (int i= 0; i < (int) getMensagem().length(); i++){
+		char letraResultante = mensagem[i], letraPadrao = 'a';
+
+		if (isupper(mensagem[i]))
+			letraPadrao = 'A';
+		// há interesse apenas em aplicar a cifra em letras
+		if (isalpha(mensagem[i]))
+			// pega-se o resto da divisão por 26 devido a ciclicidade dos valores possíveis
+			letraResultante = ((mensagem[i] - dadoCriptografia - letraPadrao + 26) % 26) + letraPadrao;
+
+		mensagemDecodificada += letraResultante;
+	}
+
+	string texto= mensagemDecodificada;
+
+  std::cout << texto << '\n';
+
+}*/

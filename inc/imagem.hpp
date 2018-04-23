@@ -5,13 +5,17 @@
 #include <fstream>
 #include <stdlib.h>
 #include <bits/stdc++.h>
+#include <sstream>
 
 
 
 using namespace std;
 
 class Imagem{
+
 protected:
+
+  string nomeArquivo;
   string tipo;
   string comentario;
   vector<string> conteudos;
@@ -20,6 +24,9 @@ protected:
   int dadoCriptografia;
   string mensagem;
   int posicaoComentario;
+  int tamanhoColuna;
+  int tamanhoLinha;
+  char ***matriz;
 
 public:
   //Construtor e destrutor
@@ -27,6 +34,8 @@ public:
   ~Imagem();
 
   //Métodos acessores
+    void setNomeArquivo(string nomeArquivo);
+    string getNomeArquivo();
     void setPosicaoComentario(int posicaoComentario);
     int getPosicaoComentario();
     void setDadoCriptografia(int dadoCriptografia);
@@ -39,14 +48,23 @@ public:
     int getLocalSMS();
     void setTamanhoSMS(int tamanhoSMS);
     int getTamanhoSMS();
-    void setMensagem(string mensagem);
-    string getMensagem();
+ void setMensagem(string mensagem);
+ string getMensagem();
+
+ void setTamanhoColuna(int tamanhoColuna);
+ int getTamanhoColuna();
+ void setTamanhoLinha(int tamanhoLinha);
+ int getTamanhoLinha();
+
 
 
   //Outros Métodos
   void lerImagem();
   ifstream imagem;
-  void pegarDados();
+  void pegarDadosCriptografia();
   void pegarMensagem();
+  void transformarImagemEmMatriz();
+
+  //virtual void pegarTerceiroDado()=0;
 };
 #endif

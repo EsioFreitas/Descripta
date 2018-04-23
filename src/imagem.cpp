@@ -6,6 +6,7 @@
 #include <stdio.h>
 #include <cstring>
 #include <cstdlib>
+#include <sstream>
 
 
 using namespace std;
@@ -61,6 +62,27 @@ void Imagem::setMensagem(string mensagem){
 string Imagem::getMensagem(){
   return this->mensagem;
 }
+void Imagem::setNomeArquivo(string nomeArquivo){
+  this->nomeArquivo = nomeArquivo;
+}
+string Imagem::getNomeArquivo(){
+  return this->nomeArquivo.c_str();
+}
+void Imagem::setTamanhoColuna(int tamanhoColuna){
+  this->tamanhoColuna = tamanhoColuna;
+}
+int Imagem::getTamanhoColuna(){
+  return this->tamanhoColuna;
+}
+void Imagem::setTamanhoLinha(int tamanhoLinha){
+  this->tamanhoLinha = tamanhoLinha;
+}
+int Imagem::getTamanhoLinha(){
+  return this->tamanhoLinha;
+}
+
+
+
 
 
 //Outros métodos
@@ -69,68 +91,121 @@ string Imagem::getMensagem(){
 void Imagem::lerImagem(){
 
   string linha;
-  char nomeArquivo[100];
+  string abrirArquivo;
+
+  string tipo="";
+  string descarte= "";
+	int tamanhoColuna;
+  int tamanhoLinha;
 
   //Pegando o arquivo pelo path
-  cout << "Nome do arquivo: "; cin>>nomeArquivo;
-  imagem.open(nomeArquivo, ifstream::binary);
+  cout << "Nome do arquivo: "; cin>> abrirArquivo;
+
+  imagem.open(abrirArquivo.c_str());
 
 
-  //Jovando o arquivo em um vector
+  //Validando o arquivo e pegando os dados da imagem
   if(imagem.is_open()){
-    while (getline(imagem,linha)){
-      conteudos.push_back(linha);
-    }
-    //Apagando imagem
-    imagem.clear();
 
-  }
-  else{
+    getline(imagem,tipo);
+    getline(imagem, descarte);
+
+    imagem>>tamanhoColuna>>tamanhoLinha;
+
+    setTamanhoLinha(tamanhoLinha);
+    setTamanhoColuna(tamanhoColuna);
+    setTipo(tipo);
+    setNomeArquivo(abrirArquivo);
+    imagem.close();
+
+  } else {
     cout<<"Não foi possível encontrar o arquivo.\nMuito obrigado!";
     imagem.clear();
-    }
-
   }
+}
 
 //Jogando os dadados da imagem em variáveis
-void Imagem::pegarDados(){
-  int contador1 = 0;
-  int contador2 = 0;
-  int primeiraPosicao = 0;
-  int segundaPosicao = 1;
+void Imagem::pegarDadosCriptografia(){
+  int localSMS;
+  int tamanhoSMS;
+  int dadoCriptografia;
+	string descarte;
 
-  //Salvando os conteúdos nas variáveis
-  setTipo(conteudos[primeiraPosicao]);
-  setComentario(conteudos[segundaPosicao]);
+	ifstream imagem(nomeArquivo.c_str());
 
-  //Pegando os dados do comentario e separando em suas respectivas variáveis
-  for(contador1; strlen(comentario.c_str()) && !isspace(comentario[contador1]); contador1++)
-  comentario[primeiraPosicao] = ' ';
-  setLocalSMS(atoi(comentario.c_str()));
+	getline(imagem, descarte); // despreza a primeira linha do arquivo
+	getline(imagem, descarte);
 
-  for(contador1++; strlen(comentario.c_str()) && !isspace(comentario[contador1]); contador1++){
-    comentario[contador2] = comentario[contador1];
-    comentario[contador2+segundaPosicao] = '\0';
-    contador2++;
+	descarte.erase(0, 1); // apaga a sinalização de comentário (#)
+	istringstream iss(descarte);
+	iss >> localSMS >> tamanhoSMS >> dadoCriptografia;
+
+  setLocalSMS(localSMS);
+  setTamanhoSMS(tamanhoSMS);
+  setDadoCriptografia(dadoCriptografia);
+
+  std::cout <<  getLocalSMS()<< '\n';
+  std::cout <<  getTamanhoSMS()<< '\n';
+
+  std::cout <<  getDadoCriptografia()<< '\n';
+
+
+
+	imagem.close();
   }
-  setTamanhoSMS(atoi(comentario.c_str()));
 
-  //Salvando a ultima posição do i para poder pegar o 3° dado
-  setPosicaoComentario(contador1);
-  }
+
+void Imagem::transformarImagemEmMatriz(){
+
+  ifstream imagem(this->nomeArquivo.c_str());
+
+  matriz = new char **[getTamanhoLinha()];
+	for (int i = 0; i < getTamanhoLinha(); i++){
+		matriz[i] = new char *[getTamanhoColuna()];
+		for (int j = 0; j < getTamanhoColuna(); j++){
+			matriz[i][j] = new char[1];
+		}
+	}
+
+  std::cout << matriz << '\n';
+  std::cout << nomeArquivo << '\n';
+  string aux = " ";
+
+    for (int i = 0; i < 4; i++)
+		  getline(imagem, aux);
+
+
+  for (int i = 0; i < getTamanhoLinha(); i++){
+		for (int j = 0; j < getTamanhoColuna(); j++){
+			char letra;
+			imagem.get(letra);
+      matriz[i][j][0] = letra;
+		}
+	}
+  std::cout << matriz << '\n';
+	imagem.close();
+
+}
+
 
 //Jogando o conteúdo da imagem é uma variável
 void Imagem::pegarMensagem(){
 
-    int contador = localSMS;
-    int regra = localSMS + tamanhoSMS;
-    int linhaDoConteudo =4;
 
-    for (contador; contador<regra; contador++){
+  int contador = 0;
+  string mensagem = "";
+  int regra = localSMS + tamanhoSMS;
 
-     this->mensagem += conteudos[linhaDoConteudo][contador];
+  for (int i = 0; i < getTamanhoLinha(); i++){
+    for (int j = 0; j < getTamanhoColuna(); j++){
+      if (contador >= getLocalSMS() && contador < regra)
+        mensagem += matriz[i][j][0];
+        contador++;
+      }
     }
-    cout << "A sua mensagem: " << getMensagem() << '\n';
+
+    setMensagem(mensagem);
+    std::cout << getMensagem() <<"eeee"<< '\n';
   }
 
 //Método para ser sobrescrito nas classes Ppm e Pgm

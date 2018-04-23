@@ -29,24 +29,27 @@ int main(int argc, char const *argv[]) {
       system("clear || cls");
       Ppm *ppm = new Ppm();
       ppm->lerImagem();
-      ppm->pegarDados();
-      ppm->pegarMensagem();
+      //ppm->pegarDados();
+
       break;
     } else if(opcao == '2'){
       system("clear || cls");
       Pgm *pgm = new Pgm();
       pgm->lerImagem();
-      pgm->pegarDados();
+      pgm->pegarDadosCriptografia();
+      pgm->transformarImagemEmMatriz();
       pgm->pegarMensagem();
-      pgm->pegarTerceiroDado();
+      //pgm->pegarMensagem();
       pgm->cifraDeCesar();
 
-      std::cout << "Muito obrigado!!" << '\n';
-    //  delete pgm;
+
+      std::cout << "Muito obrigado!" << '\n';
+      delete pgm;
+
       break;
     } else if (opcao == '0'){
       system("clear || cls");
-      std::cout << "\n\nMuito obrigado pela preferência" << '\n';
+      std::cout << "\n\nMuito obrigado pela preferência." << '\n';
 
       break;
     } else
