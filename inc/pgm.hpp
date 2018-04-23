@@ -8,6 +8,9 @@
 
 class Pgm : public Imagem {
 
+private:
+  char ***matriz;
+
 public:
   Pgm();
   ~Pgm();

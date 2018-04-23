@@ -61,7 +61,7 @@ do {
     system("clear || cls");
     cout << "\nNão há essa opção!\n" << '\n';
 
-    cout << "Deseja usar novamente? (s/n): " << '\n';
+    cout << "Deseja usar o programa novamente? (s/n): " ;
     cin >> opcao;
   } while (opcao == 's');
 

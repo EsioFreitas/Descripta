@@ -13,6 +13,7 @@ class Ppm : public Imagem {
 private:
   string keyword;
   string alfabeto;
+  unsigned char ***matriz3D;
 public:
   Ppm();
   ~Ppm();

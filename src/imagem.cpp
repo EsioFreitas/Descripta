@@ -20,17 +20,11 @@ Imagem::~Imagem(){
 }
 
 //Métodos acessores
-void Imagem::setPosicaoComentario(int posicaoComentario){
-  this->posicaoComentario = posicaoComentario;
+void Imagem::setNomeArquivo(string nomeArquivo){
+  this->nomeArquivo = nomeArquivo;
 }
-int Imagem::getPosicaoComentario(){
-  return this->posicaoComentario;
-}
-void Imagem::setDadoCriptografia(int dadoCriptografia){
-  this->dadoCriptografia = dadoCriptografia;
-}
-int Imagem::getDadoCriptografia(){
-  return this->dadoCriptografia;
+string Imagem::getNomeArquivo(){
+  return this->nomeArquivo.c_str();
 }
 void Imagem::setTipo(string tipo){
   this->tipo = tipo;
@@ -56,17 +50,23 @@ void Imagem::setTamanhoSMS(int tamanhoSMS){
 int Imagem::getTamanhoSMS(){
   return this->tamanhoSMS;
 }
+void Imagem::setDadoCriptografia(int dadoCriptografia){
+  this->dadoCriptografia = dadoCriptografia;
+}
+int Imagem::getDadoCriptografia(){
+  return this->dadoCriptografia;
+}
 void Imagem::setMensagem(string mensagem){
   this->mensagem = mensagem;
 }
 string Imagem::getMensagem(){
   return this->mensagem;
 }
-void Imagem::setNomeArquivo(string nomeArquivo){
-  this->nomeArquivo = nomeArquivo;
+void Imagem::setPosicaoComentario(int posicaoComentario){
+  this->posicaoComentario = posicaoComentario;
 }
-string Imagem::getNomeArquivo(){
-  return this->nomeArquivo.c_str();
+int Imagem::getPosicaoComentario(){
+  return this->posicaoComentario;
 }
 void Imagem::setTamanhoColuna(int tamanhoColuna){
   this->tamanhoColuna = tamanhoColuna;
@@ -80,10 +80,6 @@ void Imagem::setTamanhoLinha(int tamanhoLinha){
 int Imagem::getTamanhoLinha(){
   return this->tamanhoLinha;
 }
-
-
-
-
 
 
 //Outros métodos
@@ -120,7 +116,7 @@ void Imagem::lerImagem(){
     imagem.close();
 
   } else {
-    cout<<"Não foi possível encontrar o arquivo.\nMuito obrigado!";
+    cout<<"Não foi possível encontrar o arquivo.\nMuito obrigado por usar o programa!";
     imagem.clear();
   }
 }

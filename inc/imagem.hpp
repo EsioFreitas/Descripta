@@ -14,11 +14,10 @@ using namespace std;
 class Imagem{
 
 protected:
-
+//Atributos:
   string nomeArquivo;
   string tipo;
   string comentario;
-  vector<string> conteudos;
   int localSMS;
   int tamanhoSMS;
   int dadoCriptografia;
@@ -26,22 +25,16 @@ protected:
   int posicaoComentario;
   int tamanhoColuna;
   int tamanhoLinha;
-  char ***matriz;
-  unsigned char ***matriz3D;
+  
 
 public:
-  //Construtor e destrutor
+  //Construtor e destrutor:
   Imagem();
   virtual ~Imagem();
 
-  //Métodos acessores
+  //Métodos acessores:
     void setNomeArquivo(string nomeArquivo);
     string getNomeArquivo();
-    void setPosicaoComentario(int posicaoComentario);
-    int getPosicaoComentario();
-    void setDadoCriptografia(int dadoCriptografia);
-    int getDadoCriptografia();
-
     void setTipo(string tipo);
     string getTipo();
     void setComentario(string comentario);
@@ -50,16 +43,19 @@ public:
     int getLocalSMS();
     void setTamanhoSMS(int tamanhoSMS);
     int getTamanhoSMS();
+    void setDadoCriptografia(int dadoCriptografia);
+    int getDadoCriptografia();
     void setMensagem(string mensagem);
     string getMensagem();
+    void setPosicaoComentario(int posicaoComentario);
+    int getPosicaoComentario();
+    void setTamanhoColuna(int tamanhoColuna);
+    int getTamanhoColuna();
+    void setTamanhoLinha(int tamanhoLinha);
+    int getTamanhoLinha();
 
- void setTamanhoColuna(int tamanhoColuna);
- int getTamanhoColuna();
- void setTamanhoLinha(int tamanhoLinha);
- int getTamanhoLinha();
 
-
-  //Outros Métodos
+  //Outros Métodos:
   ifstream imagem;
   void lerImagem();
   virtual void pegarDadosCriptografia()=0;
