@@ -14,6 +14,3 @@ Ppm::~Ppm(){
 }
 
 //Outros métodos
-void Ppm::pegarTerceiroDado(){
-
-  }

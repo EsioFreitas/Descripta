@@ -18,11 +18,78 @@ Pgm::~Pgm(){
 
 //Outros métodos
 
-//Método sobrescrito para pegar o 3° dado do comentário
 
+
+//Copiando os dados da imagem para as variáveis
+void Pgm::pegarDadosCriptografia(){
+  int localSMS;
+  int tamanhoSMS;
+  int dadoCriptografia;
+	string descarte;
+
+	ifstream imagem(nomeArquivo.c_str());
+
+  //Descartar linhas iniciais
+	getline(imagem, descarte);
+	getline(imagem, descarte);
+	descarte.erase(0, 1);
+
+	istringstream iss(descarte);
+	iss >> localSMS >> tamanhoSMS >> dadoCriptografia;
+
+  setLocalSMS(localSMS);
+  setTamanhoSMS(tamanhoSMS);
+  setDadoCriptografia(dadoCriptografia);
+
+	imagem.close();
+  }
+
+//Salvando a imagem em uma matriz para poder pegar a mensagem
+void Pgm::transformarImagemEmMatriz(){
+
+  ifstream imagem(this->nomeArquivo.c_str());
+
+  matriz = new char **[getTamanhoLinha()];
+	for (int i = 0; i < getTamanhoLinha(); i++){
+		matriz[i] = new char *[getTamanhoColuna()];
+		for (int j = 0; j < getTamanhoColuna(); j++){
+			matriz[i][j] = new char[1];
+		}
+	}
+
+  string descarte;
+
+    for (int i = 0; i < 4; i++)
+		  getline(imagem, descarte);
+
+  for (int i = 0; i < getTamanhoLinha(); i++){
+		for (int j = 0; j < getTamanhoColuna(); j++){
+			char letra;
+			imagem.get(letra);
+      matriz[i][j][0] = letra;
+		}
+	}
+	imagem.close();
+}
+
+
+//Jogando o conteúdo da imagem é uma variável
+void Pgm::pegarMensagem(){
+  int contador = 0;
+  string mensagem;
+  int regra = getLocalSMS() + getTamanhoSMS();
+
+  for (int i = 0; i < getTamanhoLinha(); i++){
+    for (int j = 0; j < getTamanhoColuna(); j++){
+      if (contador >= getLocalSMS() && contador < regra)
+        mensagem += matriz[i][j][0];
+        contador++;
+      }
+    }
+    setMensagem(mensagem);
+  }
 
 //A cifra de Cesar
-
 void Pgm::cifraDeCesar(){
 
   //Jogando os dados em variáveis locai
@@ -30,14 +97,11 @@ void Pgm::cifraDeCesar(){
   int tamanhoTexto = strlen(this->mensagem.c_str());
   char texto[tamanhoTexto];
 
-  std::cout << deslocamento << '\n';
-  std::cout << tamanhoTexto << '\n';
-
   for(int i=0; i<tamanhoTexto;i++){
     texto[i] = mensagem[i];
     texto[i+1] = '\0';
   }
-  std::cout << texto << '\n';
+  std::cout<< "Sua mensagem: " << texto<< '\n';
 
   int i=0;
   int contador = 0;
@@ -74,32 +138,8 @@ void Pgm::cifraDeCesar(){
         letra++;
         if(contador == tamanhoTexto)
           break;
-
     }
   }
 
-  cout<<"A sua mensagem descriptografada: "; std::cout << texto << '\n';
+    cout<<"A sua mensagem descriptografada: "; std::cout << texto << '\n';
 }
-
-
-/*void Pgm::cifraDeCesar(){
-  string mensagemDecodificada = "";
-
-	for (int i= 0; i < (int) getMensagem().length(); i++){
-		char letraResultante = mensagem[i], letraPadrao = 'a';
-
-		if (isupper(mensagem[i]))
-			letraPadrao = 'A';
-		// há interesse apenas em aplicar a cifra em letras
-		if (isalpha(mensagem[i]))
-			// pega-se o resto da divisão por 26 devido a ciclicidade dos valores possíveis
-			letraResultante = ((mensagem[i] - dadoCriptografia - letraPadrao + 26) % 26) + letraPadrao;
-
-		mensagemDecodificada += letraResultante;
-	}
-
-	string texto= mensagemDecodificada;
-
-  std::cout << texto << '\n';
-
-}*/

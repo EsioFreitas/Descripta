@@ -31,7 +31,7 @@ protected:
 public:
   //Construtor e destrutor
   Imagem();
-  ~Imagem();
+  virtual ~Imagem();
 
   //Métodos acessores
     void setNomeArquivo(string nomeArquivo);
@@ -57,14 +57,11 @@ public:
  int getTamanhoLinha();
 
 
-
   //Outros Métodos
-  void lerImagem();
   ifstream imagem;
-  void pegarDadosCriptografia();
-  void pegarMensagem();
-  void transformarImagemEmMatriz();
-
-  //virtual void pegarTerceiroDado()=0;
+  void lerImagem();
+  virtual void pegarDadosCriptografia()=0;
+  virtual void pegarMensagem() = 0;
+  virtual void transformarImagemEmMatriz()=0;
 };
 #endif

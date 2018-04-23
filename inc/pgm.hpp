@@ -11,7 +11,11 @@ class Pgm : public Imagem {
 public:
   Pgm();
   ~Pgm();
+  void pegarDadosCriptografia();
+  void pegarMensagem();
+  void transformarImagemEmMatriz();
   void cifraDeCesar();
+
 
 };
 
