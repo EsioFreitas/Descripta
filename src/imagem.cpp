@@ -85,6 +85,7 @@ int Imagem::getTamanhoLinha(){
 
 
 
+
 //Outros métodos
 
 //Ler a imagem

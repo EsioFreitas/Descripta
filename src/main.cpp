@@ -27,11 +27,11 @@ int main(int argc, char const *argv[]) {
 
     if(opcao == '1'){
       system("clear || cls");
-    //  Imagem *ppm = new Ppm();
-    //  ppm->lerImagem();
-    //  ppm->pegarDadosCriptografia();
-    //  ppm->transformarImagemEmMatriz();
-    //  ppm->pegarMensagem();
+      Ppm *ppm = new Ppm();
+      ppm->lerImagem();
+      ppm->pegarDadosCriptografia();
+      ppm->transformarImagemEmMatriz();
+      ppm->pegarMensagem();
       //ppm->pegarDados();
 
       break;

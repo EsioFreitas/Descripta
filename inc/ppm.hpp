@@ -11,10 +11,20 @@ using namespace std;
 class Ppm : public Imagem {
 
 private:
-  int tamanhoReal;
+  string keyword;
 public:
   Ppm();
   ~Ppm();
+
+  void setKeyword(string keyword);
+  string getKeyword();
+
+  
+  void pegarDadosCriptografia();
+  void pegarMensagem();
+  void transformarImagemEmMatriz();
+  void cifraDeCesar();
+
 
 };
 

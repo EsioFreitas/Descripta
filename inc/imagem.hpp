@@ -27,6 +27,7 @@ protected:
   int tamanhoColuna;
   int tamanhoLinha;
   char ***matriz;
+  unsigned char ***matriz3D;
 
 public:
   //Construtor e destrutor
@@ -40,6 +41,7 @@ public:
     int getPosicaoComentario();
     void setDadoCriptografia(int dadoCriptografia);
     int getDadoCriptografia();
+
     void setTipo(string tipo);
     string getTipo();
     void setComentario(string comentario);
@@ -48,8 +50,8 @@ public:
     int getLocalSMS();
     void setTamanhoSMS(int tamanhoSMS);
     int getTamanhoSMS();
- void setMensagem(string mensagem);
- string getMensagem();
+    void setMensagem(string mensagem);
+    string getMensagem();
 
  void setTamanhoColuna(int tamanhoColuna);
  int getTamanhoColuna();
