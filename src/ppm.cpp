@@ -23,6 +23,13 @@ void Ppm::setKeyword(string keyword){
 string Ppm::getKeyword(){
   return this->keyword;
 }
+void Ppm::setAlfabeto(string alfabeto){
+  this->alfabeto = alfabeto;
+}
+string Ppm::getAlfabeto(){
+  return this->alfabeto;
+}
+
 
 //Outros métodos
 //Copiando os dados da imagem para as variáveis
@@ -109,5 +116,90 @@ void Ppm::pegarMensagem(){
 	}
 
   setMensagem(mensagem);
-  std::cout << getMensagem() << '\n';
+  std::cout << getMensagem()<<"sss" << '\n';
+}
+
+void Ppm::criarAlfabeto(){
+  string enconder;
+	bool naotem = true;
+	unsigned int i, j;
+
+	//Inserindo Keyword no meu alfabeto cifrado e checando se existe repetição
+	for (i = 0; i < keyword.size(); i++){
+		for (j = 0; j < enconder.size(); j++){
+			if (keyword[i] == enconder[i]){
+				naotem = false;
+			}
+		}
+
+		if (naotem){
+			if (keyword[i] >= 'a' && keyword[i] <= 'z')
+				//Convertendo letras minúsculas em maiúsculas
+				enconder += keyword[i] - 32;
+			else
+				enconder += keyword[i];
+		}
+		naotem = true;
+	}
+  for (i = 0; i < 26; i++){
+		for (j = 0; j < enconder.size(); j++){
+			if (enconder[j] == ('A' + (int)i)){
+				naotem = false;
+			}
+		}
+
+		if (naotem){
+			//Inserindo caracteres a partir da tabela ASC II
+			enconder += ('A' + i);
+		}
+		naotem = true;
+	}
+
+  std::cout << enconder << '\n';
+  setAlfabeto(enconder);
+  std::cout << getAlfabeto() << '\n';
+}
+
+
+
+void Ppm::keywordChipher(){
+    int regra1 = getAlfabeto().size();
+    int regra2 = getMensagem().size();
+    // Hold the position of every character (A-Z)
+    // from encoded string
+    map <char,int> enc;
+    for(int i=0; i<regra1; i++)
+    {
+        enc[alfabeto[i]]=i;
+    }
+
+    string decipher="";
+    string plaintext = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+
+    // This loop deciphered the message.
+    // Spaces, special characters and numbers remain same.
+    for (int i=0; i<regra2; i++)
+    {
+        if (mensagem[i] >='a' && mensagem[i] <='z')
+        {
+            int pos = enc[mensagem[i]-32];
+            decipher += plaintext[pos];
+        }
+        else if(mensagem[i] >='A' && mensagem[i] <='Z')
+        {
+            int pos = enc[mensagem[i]];
+            decipher += plaintext[pos];
+        }
+        else if(mensagem[i] == '`'){
+          mensagem[i] = ' ';
+          decipher += mensagem[i];
+        }
+        else
+        {
+            decipher += mensagem[i];
+        }
+    }
+    std::cout << decipher  << '\n';
+
+
 }

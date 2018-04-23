@@ -99,7 +99,7 @@ void Imagem::lerImagem(){
   int tamanhoLinha;
 
   //Pegando o arquivo pelo path
-  cout << "Nome do arquivo: "; cin>> abrirArquivo;
+  cout << "Nome do arquivo (exemplo.extensão): "; cin>> abrirArquivo;
 
   imagem.open(abrirArquivo.c_str());
 

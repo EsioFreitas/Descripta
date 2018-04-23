@@ -14,7 +14,7 @@ public:
   void pegarDadosCriptografia();
   void pegarMensagem();
   void transformarImagemEmMatriz();
-  void cifraDeCesar();
+  void ceasarChipher();
 
 
 };

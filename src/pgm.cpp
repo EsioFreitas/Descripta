@@ -90,7 +90,7 @@ void Pgm::pegarMensagem(){
   }
 
 //A cifra de Cesar
-void Pgm::cifraDeCesar(){
+void Pgm::ceasarChipher(){
 
   //Jogando os dados em variáveis locai
   int deslocamento = getDadoCriptografia();

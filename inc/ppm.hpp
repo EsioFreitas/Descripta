@@ -12,19 +12,22 @@ class Ppm : public Imagem {
 
 private:
   string keyword;
+  string alfabeto;
 public:
   Ppm();
   ~Ppm();
 
   void setKeyword(string keyword);
   string getKeyword();
+  void setAlfabeto(string alfabeto);
+  string getAlfabeto();
 
-  
+
   void pegarDadosCriptografia();
   void pegarMensagem();
   void transformarImagemEmMatriz();
-  void cifraDeCesar();
-
+  void keywordChipher();
+  void criarAlfabeto();
 
 };
 

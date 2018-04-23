@@ -9,15 +9,15 @@
 
 using namespace std;
 
-char opcao =1;
+char opcao = ' ';
 
 int main(int argc, char const *argv[]) {
 
 
 
-  while(opcao != 0){
+do {
     system("clear || cls");
-    cout<<"Bem vindo ao programa que descriptografar uma mensagem em uma imagem!\n";
+    cout<<"Programa para descriptografar imagens de extensão .ppm e .pgm\n";
     cout<<"Que tipo de arquivo você quer descriptografar?\n";
     cout<<"1) Descriptografar uma imagem .ppm\n";
     cout<<"2) Descriptografar uma imagem .pgm\n";
@@ -32,7 +32,10 @@ int main(int argc, char const *argv[]) {
       ppm->pegarDadosCriptografia();
       ppm->transformarImagemEmMatriz();
       ppm->pegarMensagem();
-      //ppm->pegarDados();
+      ppm->criarAlfabeto();
+      ppm->keywordChipher();
+
+      delete ppm;
 
       break;
     } else if(opcao == '2'){
@@ -42,8 +45,7 @@ int main(int argc, char const *argv[]) {
       pgm->pegarDadosCriptografia();
       pgm->transformarImagemEmMatriz();
       pgm->pegarMensagem();
-      //pgm->pegarMensagem();
-      pgm->cifraDeCesar();
+      pgm->ceasarChipher();
 
 
       std::cout << "Muito obrigado!" << '\n';
@@ -57,9 +59,11 @@ int main(int argc, char const *argv[]) {
       break;
     } else
     system("clear || cls");
-    cout << "\nVERIIFIQUE A OPÇÃO ESCOLHIDA!\n" << '\n';
-  }
+    cout << "\nNão há essa opção!\n" << '\n';
 
+    cout << "Deseja usar novamente? (s/n): " << '\n';
+    cin >> opcao;
+  } while (opcao == 's');
 
 
   return 0;
