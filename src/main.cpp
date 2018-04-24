@@ -24,7 +24,7 @@ do {
     cout<<"0) Sair do programa\n";
 
     std::cout << "Sua opção: "; cin>>opcao;
-
+    
     if(opcao == '1'){
       system("clear || cls");
       Ppm *ppm = new Ppm();
@@ -34,9 +34,9 @@ do {
       ppm->pegarMensagem();
       ppm->criarAlfabeto();
       ppm->keywordChipher();
-
+    
       delete ppm;
-
+    
       break;
     } else if(opcao == '2'){
       system("clear || cls");
@@ -46,25 +46,25 @@ do {
       pgm->transformarImagemEmMatriz();
       pgm->pegarMensagem();
       pgm->ceasarChipher();
-
-
+    
+    
       std::cout << "Muito obrigado!" << '\n';
       delete pgm;
-
+    
       break;
     } else if (opcao == '0'){
       system("clear || cls");
       std::cout << "\n\nMuito obrigado pela preferência." << '\n';
-
+    
       break;
     } else
     system("clear || cls");
     cout << "\nNão há essa opção!\n" << '\n';
-
+    
     cout << "Deseja usar o programa novamente? (s/n): " ;
     cin >> opcao;
-  } while (opcao == 's');
-
-
-  return 0;
-}
+    } 
+    while (opcao == 's');
+    
+    return 0;
+    }
