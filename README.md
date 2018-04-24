@@ -1,5 +1,5 @@
 # Programa para descriptografar imagens do tipo .ppm ou . pgm
-
+=============================================================
 
 ##PROPOSTA
 O programa serve para ler uma imagem do tipo .ppm ou .pgm e encontrar uma imagem criptografada. Cada tipo de arquivo tem um tipo de criptografia.
