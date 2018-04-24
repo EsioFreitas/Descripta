@@ -10,7 +10,7 @@ Criptografias usadas:
 Ps.: Outras informações: [WIKI - EP1 Professor Renato Sampaio](https://gitlab.com/oofga/eps_2018_1/ep1/wikis/home).
 
 
-### PRÉ-REQUISITOS (LINUX)
+## PRÉ-REQUISITOS (LINUX)
 Para poder usar o prgrama, deverá usar os seguintes passos: 
 1. Dar git clone do repositório;
 2. As fotos devem estar dentro do repositório, como os exemplos;
