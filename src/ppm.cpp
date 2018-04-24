@@ -35,59 +35,60 @@ string Ppm::getAlfabetoCriptografado(){
 //Outros métodos:
 //Copiando os dados da imagem para as variáveis
 void Ppm::pegarDadosCriptografia(){
-  int localSMS;
-  int tamanhoSMS;
-  string keyword;
-	string descarte;
-
-	ifstream imagem(nomeArquivo.c_str());
-
-  //Descartar linhas iniciais
-	getline(imagem, descarte);
-	getline(imagem, descarte);
-	descarte.erase(0, 1);
-
-	istringstream iss(descarte);
-	iss >> localSMS >> tamanhoSMS >> keyword;
-
-  setLocalSMS(localSMS);
-  setTamanhoSMS(tamanhoSMS);
-  setKeyword(keyword);
-
-	imagem.close();
+    int localSMS;
+    int tamanhoSMS;
+    string keyword;
+    string descarte;
+    
+    ifstream imagem(nomeArquivo.c_str());
+    
+    //Descartar linhas iniciais
+    
+    getline(imagem, descarte);
+    getline(imagem, descarte);
+    descarte.erase(0, 1);
+    
+    istringstream iss(descarte);
+    iss >> localSMS >> tamanhoSMS >> keyword;
+    
+    setLocalSMS(localSMS);
+    setTamanhoSMS(tamanhoSMS);
+    setKeyword(keyword);
+    
+    imagem.close();
   }
 
 //Salvando a imagem em uma matriz para poder pegar a mensagem
 void Ppm::transformarImagemEmMatriz(){
-  string nomeArq = getNomeArquivo();
-
-  ifstream imagem(nomeArq.c_str());
-
-  matriz3D = new unsigned char **[getTamanhoLinha()];
-	for (int i = 0; i < getTamanhoLinha(); i++){
-		matriz3D[i] = new unsigned char *[getTamanhoColuna()];
-		for (int j = 0; j < getTamanhoColuna(); j++){
-			matriz3D[i][j] = new unsigned char[3];
-		}
-	}
-
-  string descarte;
-
+    string nomeArq = getNomeArquivo();
+    
+    ifstream imagem(nomeArq.c_str());
+    
+    matriz3D = new unsigned char **[getTamanhoLinha()];
+    for (int i = 0; i < getTamanhoLinha(); i++){
+    	matriz3D[i] = new unsigned char *[getTamanhoColuna()];
+    	for (int j = 0; j < getTamanhoColuna(); j++){
+    	matriz3D[i][j] = new unsigned char[3];
+    	}
+    }
+    
+    string descarte;
+    
     for (int i = 0; i < 4; i++)
-		  getline(imagem, descarte);
-
-  for (int i = 0; i < getTamanhoLinha(); i++){
-		for (int j = 0; j < getTamanhoColuna(); j++){
-			char letra;
-			imagem.get(letra);
-      matriz3D[i][j][0] = (char)letra;
-      imagem.get(letra);
-      matriz3D[i][j][1] = (char)letra;
-      imagem.get(letra);
-      matriz3D[i][j][2] = (char)letra;
-		}
-	}
-	imagem.close();
+    	  getline(imagem, descarte);
+    
+    for (int i = 0; i < getTamanhoLinha(); i++){
+    	for (int j = 0; j < getTamanhoColuna(); j++){
+    		char letra;
+    		imagem.get(letra);
+            matriz3D[i][j][0] = (char)letra;
+            imagem.get(letra);
+            matriz3D[i][j][1] = (char)letra;
+            imagem.get(letra);
+            matriz3D[i][j][2] = (char)letra;
+    	}
+    }
+    imagem.close();
 }
 
 
@@ -116,16 +117,17 @@ void Ppm::pegarMensagem(){
 			}
 		}
 	}
-  cout<< "Sua mensagem: " << mensagem<< '\n';
+	setMensagem(mensagem);
+    cout<< "Sua mensagem: " << getMensagem()<< '\n';
 
 }
 
 //Criar um alfabeco com a keyword
 void Ppm::criarAlfabeto(){
-  string alfabetoCodificado;
-	bool validador = true;
+    string alfabetoCodificado;
+    bool validador = true;
 	unsigned int i, j;
-  string chave = getKeyword();
+	string chave = getKeyword();
 
 	for (i = 0; i < chave.size(); i++){
 		for (j = 0; j < alfabetoCodificado.size(); j++){
@@ -154,7 +156,7 @@ void Ppm::criarAlfabeto(){
 		}
 		validador = true;
 	}
-  setAlfabetoCriptografado(alfabetoCodificado);
+    setAlfabetoCriptografado(alfabetoCodificado);
 }
 
 //Descriptografar a mensagem
