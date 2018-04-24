@@ -87,36 +87,37 @@ int Imagem::getTamanhoLinha(){
 //Ler a imagem
 void Imagem::lerImagem(){
 
-  string linha;
-  string abrirArquivo;
-  string tipo;
-  string descarte;
-	int tamanhoColuna;
-  int tamanhoLinha;
+    string linha;
+    string abrirArquivo;
+    string tipo;
+    string descarte;
+    int tamanhoColuna;
+    int tamanhoLinha;
+    
+    //Pegando o arquivo pelo path
+    cout << "Nome do arquivo (exemplo.extensão): "; cin>> abrirArquivo;
+    
+    imagem.open(abrirArquivo.c_str());
 
-  //Pegando o arquivo pelo path
-  cout << "Nome do arquivo (exemplo.extensão): "; cin>> abrirArquivo;
 
-  imagem.open(abrirArquivo.c_str());
-
-
-  //Validando o arquivo e pegando os dados da imagem
-  if(imagem.is_open()){
-
-    getline(imagem,tipo);
-    getline(imagem, descarte);
-
-    imagem>>tamanhoColuna>>tamanhoLinha;
-
-    //Pegando os dados
-    setTamanhoLinha(tamanhoLinha);
-    setTamanhoColuna(tamanhoColuna);
-    setTipo(tipo);
-    setNomeArquivo(abrirArquivo);
-    imagem.close();
-
-  } else {
-    cout<<"Não foi possível encontrar o arquivo.\nMuito obrigado por usar o programa!";
-    imagem.clear();
-  }
+    //Validando o arquivo e pegando os dados da imagem
+    if(imagem.is_open()){
+    
+        getline(imagem,tipo);
+        getline(imagem, descarte);
+        
+        imagem>>tamanhoColuna>>tamanhoLinha;
+        
+        //Pegando os dados
+        setTamanhoLinha(tamanhoLinha);
+        setTamanhoColuna(tamanhoColuna);
+        setTipo(tipo);
+        setNomeArquivo(abrirArquivo);
+        imagem.close();
+    
+    } 
+    else {
+        cout<<"Não foi possível encontrar o arquivo.\nMuito obrigado por usar o programa!";
+        imagem.clear();
+    }
 }
