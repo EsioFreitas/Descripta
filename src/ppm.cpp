@@ -9,7 +9,7 @@
 
 using namespace std;
 
-//Construtor e destrutor
+//Construtor e destrutor:
 Ppm::Ppm(){
 
 }
@@ -17,21 +17,22 @@ Ppm::~Ppm(){
 
 }
 
+//Métodos acessores:
 void Ppm::setKeyword(string keyword){
   this->keyword = keyword;
 }
 string Ppm::getKeyword(){
   return this->keyword;
 }
-void Ppm::setAlfabeto(string alfabeto){
-  this->alfabeto = alfabeto;
+void Ppm::setAlfabetoCriptografado(string alfabetoCriptografado){
+  this->alfabetoCriptografado = alfabetoCriptografado;
 }
-string Ppm::getAlfabeto(){
-  return this->alfabeto;
+string Ppm::getAlfabetoCriptografado(){
+  return this->alfabetoCriptografado;
 }
 
 
-//Outros métodos
+//Outros métodos:
 //Copiando os dados da imagem para as variáveis
 void Ppm::pegarDadosCriptografia(){
   int localSMS;
@@ -58,8 +59,9 @@ void Ppm::pegarDadosCriptografia(){
 
 //Salvando a imagem em uma matriz para poder pegar a mensagem
 void Ppm::transformarImagemEmMatriz(){
+  string nomeArq = getNomeArquivo();
 
-  ifstream imagem(this->nomeArquivo.c_str());
+  ifstream imagem(nomeArq.c_str());
 
   matriz3D = new unsigned char **[getTamanhoLinha()];
 	for (int i = 0; i < getTamanhoLinha(); i++){
@@ -114,67 +116,61 @@ void Ppm::pegarMensagem(){
 			}
 		}
 	}
+  cout<< "Sua mensagem: " << mensagem<< '\n';
 
-  setMensagem(mensagem);
-  std::cout << getMensagem()<<"sss" << '\n';
 }
 
+//Criar um alfabeco com a keyword
 void Ppm::criarAlfabeto(){
-  string enconder;
-	bool naotem = true;
+  string alfabetoCodificado;
+	bool validador = true;
 	unsigned int i, j;
+  string chave = getKeyword();
 
-	//Inserindo Keyword no meu alfabeto cifrado e checando se existe repetição
-	for (i = 0; i < keyword.size(); i++){
-		for (j = 0; j < enconder.size(); j++){
-			if (keyword[i] == enconder[i]){
-				naotem = false;
+	for (i = 0; i < chave.size(); i++){
+		for (j = 0; j < alfabetoCodificado.size(); j++){
+			if (chave[i] == alfabetoCodificado[i]){
+				validador = false;
 			}
 		}
 
-		if (naotem){
-			if (keyword[i] >= 'a' && keyword[i] <= 'z')
-				//Convertendo letras minúsculas em maiúsculas
-				enconder += keyword[i] - 32;
+		if (validador){
+			if (chave[i] >= 'a' && chave[i] <= 'z')
+				alfabetoCodificado += chave[i] - 32;
 			else
-				enconder += keyword[i];
+				alfabetoCodificado += chave[i];
 		}
-		naotem = true;
+		validador = true;
 	}
   for (i = 0; i < 26; i++){
-		for (j = 0; j < enconder.size(); j++){
-			if (enconder[j] == ('A' + (int)i)){
-				naotem = false;
+		for (j = 0; j < alfabetoCodificado.size(); j++){
+			if (alfabetoCodificado[j] == ('A' + (int)i)){
+				validador = false;
 			}
 		}
 
-		if (naotem){
-			//Inserindo caracteres a partir da tabela ASC II
-			enconder += ('A' + i);
+		if (validador){
+			alfabetoCodificado += ('A' + i);
 		}
-		naotem = true;
+		validador = true;
 	}
-
-  std::cout << enconder << '\n';
-  setAlfabeto(enconder);
-  std::cout << getAlfabeto() << '\n';
+  setAlfabetoCriptografado(alfabetoCodificado);
 }
 
-
-
+//Descriptografar a mensagem
 void Ppm::keywordChipher(){
-    int regra1 = getAlfabeto().size();
+    int regra1 = getAlfabetoCriptografado().size();
     int regra2 = getMensagem().size();
     // Hold the position of every character (A-Z)
     // from encoded string
     map <char,int> enc;
     for(int i=0; i<regra1; i++)
     {
-        enc[alfabeto[i]]=i;
+        enc[alfabetoCriptografado[i]]=i;
     }
 
-    string decipher="";
-    string plaintext = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+    string mensagemDescriptografada="";
+    string alfabeto = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
 
     // This loop deciphered the message.
     // Spaces, special characters and numbers remain same.
@@ -183,23 +179,24 @@ void Ppm::keywordChipher(){
         if (mensagem[i] >='a' && mensagem[i] <='z')
         {
             int pos = enc[mensagem[i]-32];
-            decipher += plaintext[pos];
+            mensagemDescriptografada += alfabeto[pos];
         }
         else if(mensagem[i] >='A' && mensagem[i] <='Z')
         {
             int pos = enc[mensagem[i]];
-            decipher += plaintext[pos];
+            mensagemDescriptografada += alfabeto[pos];
         }
         else if(mensagem[i] == '`'){
           mensagem[i] = ' ';
-          decipher += mensagem[i];
+          mensagemDescriptografada += mensagem[i];
         }
         else
         {
-            decipher += mensagem[i];
+            mensagemDescriptografada += mensagem[i];
         }
     }
-    std::cout << decipher  << '\n';
+    setMensagem(mensagemDescriptografada);
+    cout <<"A sua mensagem descriptografada: " <<getMensagem() << '\n';
 
 
 }

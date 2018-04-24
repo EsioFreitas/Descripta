@@ -17,9 +17,6 @@ Pgm::~Pgm(){
 }
 
 //Outros métodos
-
-
-
 //Copiando os dados da imagem para as variáveis
 void Pgm::pegarDadosCriptografia(){
   int localSMS;
@@ -101,7 +98,7 @@ void Pgm::ceasarChipher(){
     texto[i] = mensagem[i];
     texto[i+1] = '\0';
   }
-  std::cout<< "Sua mensagem: " << texto<< '\n';
+  cout<< "Sua mensagem: " << texto<< '\n';
 
   int i=0;
   int contador = 0;
@@ -140,6 +137,6 @@ void Pgm::ceasarChipher(){
           break;
     }
   }
-
-    cout<<"A sua mensagem descriptografada: "; std::cout << texto << '\n';
+    setMensagem(texto);
+    cout<<"A sua mensagem descriptografada: "<< getMensagem() << '\n';
 }

@@ -2,9 +2,6 @@
 #define PPM_HPP
 
 #include "imagem.hpp"
-#include <string>
-#include <fstream>
-#include <stdlib.h>
 
 using namespace std;
 
@@ -12,18 +9,19 @@ class Ppm : public Imagem {
 
 private:
   string keyword;
-  string alfabeto;
+  string alfabetoCriptografado;
   unsigned char ***matriz3D;
 public:
   Ppm();
   ~Ppm();
 
+//Médodos acessores:
   void setKeyword(string keyword);
   string getKeyword();
-  void setAlfabeto(string alfabeto);
-  string getAlfabeto();
+  void setAlfabetoCriptografado(string alfabetoCriptografado);
+  string getAlfabetoCriptografado();
 
-
+//Outros métodos
   void pegarDadosCriptografia();
   void pegarMensagem();
   void transformarImagemEmMatriz();
