@@ -12,9 +12,11 @@ Ps.: Outras informações: [WIKI - EP1 Professor Renato Sampaio](https://gitlab.
 Para poder usar o prgrama, deverá usar os seguintes passos: 
 1. Dar git clone do repositório;
 2. As fotos devem estar dentro do repositório, como os exemplos;
-3. para iniciar o programa, usa-se os seguintes comandos. 
+ATENÇÃO!
+3. para iniciar o programa, deve se usar os seguintes comandos na seguinte ordem. 
 
 ```
+$ make clean
 $ make
 $ make run
 ```
