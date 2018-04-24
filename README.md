@@ -1,5 +1,5 @@
 # Programa para descriptografar imagens do tipo .ppm ou . pgm
-=============================================================
+
 
 ##PROPOSTA
 O programa serve para ler uma imagem do tipo .ppm ou .pgm e encontrar uma imagem criptografada. Cada tipo de arquivo tem um tipo de criptografia.
@@ -25,6 +25,7 @@ Segue como o programa funciona:
 1. Após o make run, o programa perguntará qual tipo de imagem o usuário quer descriptografar.
 2. escolhendo uma das opções (.pgm ou .ppm), o usuário deve adicionar o nome do arqivo junto com a extensão da imagem escolhida no menu.
     Exemplo:
+
 ```
 $ exemplo.ppm
 ```
