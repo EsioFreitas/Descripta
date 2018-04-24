@@ -116,7 +116,8 @@ void Ppm::pegarMensagem(){
 			}
 		}
 	}
-  cout<< "Sua mensagem: " << mensagem<< '\n';
+  setMensagem(mensagem);
+  cout<< "Sua mensagem: " << getMensagem()<< '\n';
 
 }
 
@@ -161,19 +162,16 @@ void Ppm::criarAlfabeto(){
 void Ppm::keywordChipher(){
     int regra1 = getAlfabetoCriptografado().size();
     int regra2 = getMensagem().size();
-    // Hold the position of every character (A-Z)
-    // from encoded string
+
     map <char,int> enc;
     for(int i=0; i<regra1; i++)
     {
         enc[alfabetoCriptografado[i]]=i;
     }
 
-    string mensagemDescriptografada="";
+    string mensagemDescriptografada;
     string alfabeto = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
 
-    // This loop deciphered the message.
-    // Spaces, special characters and numbers remain same.
     for (int i=0; i<regra2; i++)
     {
         if (mensagem[i] >='a' && mensagem[i] <='z')
@@ -194,6 +192,7 @@ void Ppm::keywordChipher(){
         {
             mensagemDescriptografada += mensagem[i];
         }
+
     }
     setMensagem(mensagemDescriptografada);
     cout <<"A sua mensagem descriptografada: " <<getMensagem() << '\n';
